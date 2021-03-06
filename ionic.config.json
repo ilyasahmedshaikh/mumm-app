@@ -1,7 +1,0 @@
-{
-  "name": "mumm",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
