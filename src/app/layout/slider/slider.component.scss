@@ -1,0 +1,55 @@
+@import '/src/styles.scss';
+
+.heading {
+    @include typography($fontSize: 17px, $fontWeight: 500, $color: $darkDefault, $padding: 0);
+}
+
+.scrollmenu {
+    @include scroll-menu($width: 30%, $padding: 14px, $background: $white, $color: $darkDefault);
+    .image-container {
+        background-color: $lightGray;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        position: relative;
+        img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    p {
+        font-size: 14px;
+        padding: 5px 0 0 0;
+        white-space: pre-wrap;
+    }
+}
+
+.check {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    font-size: 18px;
+    color: $green;
+    visibility: hidden;
+}
+
+.selected {
+    .check {
+        visibility: visible;
+    }
+}
+
+.badge-count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: $red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: $white;
+  font-size: 14px;
+}

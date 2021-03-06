@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-12">
+        <h3 class="heading">{{title}}</h3>
+    </div>
+    <div class="col-12 scrollmenu" *ngIf="data.length > 0">
+        <div class="item"
+            *ngFor="let item of data"
+            [routerLink]="['/kindergarten-details']"
+            (click)="toggleBack()"
+        >
+            <div class="image-container">
+                <div class="badge-count" *ngIf="item.count">
+                  {{item.count}}
+                </div>
+
+                <img *ngIf="item.image" class="large" src={{item.image}} alt="Category">
+                <img *ngIf="!item.image" class="large" src={{placeholderImage}} alt="Category">
+            </div>
+            <p>{{item.name}}</p>
+        </div>
+    </div>
+    <div *ngIf="data.length == 0">
+        <img class="loading" src="../../../assets/img/loading.gif" />
+    </div>
+</div>
