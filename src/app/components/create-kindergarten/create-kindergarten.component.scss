@@ -1,10 +1,12 @@
 @import '../../../styles.scss';
 
 .create-kindergarten-screen {
-    .heading h1 {
-        font-size: 21px;
-        font-weight: 600;
-        color: $lightDefault;
-        margin-bottom: 0px;
+    .heading {
+        h1 {
+			font-size: 21px;
+			font-weight: 600;
+			color: $lightDefault;
+			margin-bottom: 0px;
+        }
     }
 }
