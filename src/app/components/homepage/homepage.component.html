@@ -2,10 +2,26 @@
 	<div class="container">
 		<app-slider [data]="kindergartens" [title]="title"></app-slider>
 
-		<div class="different-category">
-			  <div class="heading">
+		<div class="different-categories">
+			<div class="col-12 heading">
 				  <h1>Categories</h1>
 			</div>
+
+      <div class="row">
+        <div class="col-4 pt-4" *ngFor="let item of Categories">
+          <div class="category"
+            [ngClass]="{ 'bg-gradient-1': getRandom() == 1,
+              'bg-gradient-2': getRandom() == 2,
+              'bg-gradient-3': getRandom() == 3,
+              'bg-gradient-4': getRandom() == 4,
+              'bg-gradient-5': getRandom() == 5 }"
+          >
+            <p class="avatar-typo">{{item.name.charAt(0)}}</p>
+          </div>
+          <p class="text-center pt-2">{{item.name}}</p>
+        </div>
+      </div>
+
 		</div>
 	</div>
 </div>

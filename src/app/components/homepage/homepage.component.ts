@@ -16,9 +16,22 @@ export class HomepageComponent implements OnInit {
     { Id: 4, name: "Kindergarten 4" },
   ];
 
+  Categories: any = [
+    { id: 1, name: "Rooms Cleaning" },
+    { id: 2, name: "Wooden Works" },
+    { id: 3, name: "Tank Cleaning" },
+    { id: 4, name: "Dusting" },
+    { id: 5, name: "Ground Cleaning" },
+    { id: 6, name: "Gardening" },
+  ]
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getRandom() {
+    return Math.floor(Math.random() * 5) + 1;
   }
 
 }

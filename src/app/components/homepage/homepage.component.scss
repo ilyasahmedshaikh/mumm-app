@@ -2,12 +2,30 @@
 
 .homepage-screen {
 	padding-top: 20px;
-		.heading {
+    .different-categories {
+      padding-top: 20px;
+      .heading {
 				h1 {
 					font-size: 21px;
 					font-weight: 600;
 					color: $lightDefault;
 					margin-bottom: 0px;
 				}
-		}
+		  }
+      .category {
+        background-color: $darkDefault;
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        margin: auto;
+        color: $white;
+        .avatar-typo {
+          text-transform: uppercase;
+          font-size: 30px;
+          text-align: center;
+          font-weight: 600;
+          padding: 20px;
+        }
+      }
+    }
 }
