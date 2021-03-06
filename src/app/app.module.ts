@@ -14,6 +14,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { SliderComponent } from './layout/slider/slider.component';
 import { KindergartenDetailsComponent } from './components/kindergarten-details/kindergarten-details.component';
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { TodoDetailsComponent } from './components/todo-details/todo-details.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
