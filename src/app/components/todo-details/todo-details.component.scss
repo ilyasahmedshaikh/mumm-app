@@ -1,0 +1,42 @@
+@import '../../../styles.scss';
+
+.todo-details-screen {
+  padding-top: 20px;
+  .heading {
+    h1 {
+      font-size: 21px;
+      font-weight: 600;
+      margin-bottom: 0px;
+    }
+  }
+  .content {
+    padding-top: 32px;
+    h4 {
+      &.topic {
+        font-size: 19px;
+      }
+    }
+    p {
+      padding-top: 2px;
+      color: $lightDefault;
+      &.category {
+        font-size: 15px;
+        span {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  .description {
+    p {
+      font-size: 16px;
+      padding-top: 22px;
+    }
+  }
+  .comment {
+    label {
+      font-size: 17px;
+      font-weight: 500;
+    }
+  }
+}
