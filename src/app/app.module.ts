@@ -8,7 +8,7 @@ import { CreateCategoryComponent } from './components/create-category/create-cat
 import { CreateKindergartenComponent } from './components/create-kindergarten/create-kindergarten.component';
 import { CreateCraftmanComponent } from './components/create-craftman/create-craftman.component';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
-import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
+// import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { SliderComponent } from './layout/slider/slider.component';
@@ -25,7 +25,7 @@ import { environment } from '../environments/environment';
     CreateKindergartenComponent,
     CreateCraftmanComponent,
     AddTodoComponent,
-    EditTodoComponent,
+    // EditTodoComponent,
     LoginComponent,
     HeaderComponent,
     SliderComponent,

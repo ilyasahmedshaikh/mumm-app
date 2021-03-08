@@ -1,1 +1,48 @@
-<p>add-todo works!</p>
+<div class="add-todo-screen">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="heading">
+          <h1>Add Todo</h1>
+        </div>
+      </div>
+      <div class="col-12 scrollmenu">
+        <div class="heading">
+
+        </div>
+        <div class="item"
+            *ngFor="let item of categories"
+            (click)="categoryClicked(item)"
+            [ngClass]="{'selected': selectedCategory.id == item.id}"
+        >
+            <div class="image-container">
+                <span class="check">
+                    <i class="fas fa-check-circle"></i>
+                </span>
+
+                <img class="large" src={{item.image}} alt="Category">
+            </div>
+            <p>{{item.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="input">
+          <div class="form-group">
+            <label>Topic</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Topic name">
+        </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="description">
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" rows="6" placeholder="Write your description here.."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
