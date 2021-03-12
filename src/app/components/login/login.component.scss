@@ -1,0 +1,22 @@
+@import '../../../styles.scss';
+
+.login-screen {
+  .heading {
+    h1 {
+      font-size: 21px;
+      font-weight: 600;
+      margin-bottom: 0px;
+    }
+  }
+  .account-text {
+    span {
+      color: $black;
+      font-size: 15px;
+    }
+    a {
+      font-weight: 600;
+      font-size: 16px;
+      padding-left: 5px;
+    }
+  }
+}

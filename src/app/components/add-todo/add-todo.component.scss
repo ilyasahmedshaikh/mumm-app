@@ -2,7 +2,7 @@
 
 .add-todo-screen {
   padding-top: 20px;
-  .heading {
+  .top-heading {
     h1 {
       font-size: 21px;
       font-weight: 600;
@@ -11,6 +11,13 @@
   }
   .scrollmenu {
     @include scroll-menu($width: 28%, $padding: 14px, $background: $white, $color: $darkDefault);
+    .section-heading {
+      h3 {
+        font-size: 21px;
+        font-weight: 600;
+        margin-bottom: 0px;
+      }
+    }
     .image-container {
         background-color: $lightGray;
         width: 90px;
