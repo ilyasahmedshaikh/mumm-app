@@ -32,3 +32,15 @@ https://medium.com/tech-insights/how-to-deploy-angular-apps-to-github-pages-gh-p
 
 # Angular/Fire Push PWA
 https://medium.com/mighty-ghost-hack/angular-8-firebase-cloud-messaging-push-notifications-cc80d9b36f82
+
+# set Upstream with Parent:
+git remote add upstream https://github.com/ilyasahmedshaikh/mumm-app.git
+
+# Fetch Forked Repo
+git fetch upstream
+
+# Rebase your repo/branch with parent one
+git rebase upstream/main
+
+# push the updated got changes with your repo/branch
+git push origin main
