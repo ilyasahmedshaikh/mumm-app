@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
+
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { CreateKindergartenComponent } from './components/create-kindergarten/create-kindergarten.component';
@@ -50,7 +52,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

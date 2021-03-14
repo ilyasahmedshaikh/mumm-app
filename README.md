@@ -11,6 +11,9 @@ https://www.digitalocean.com/community/tutorials/angular-reactive-forms-introduc
 https://github.com/angular/angularfire
 https://github.com/angular/angularfire/blob/master/docs/install-and-setup.md
 
+# firebase REST Api setup
+https://documenter.getpostman.com/view/5843861/T1DmCe1D#231abe0c-61a9-4fba-94a9-355765dfa730
+
 # AngularFire Collections
 https://github.com/angular/angularfire/blob/master/docs/firestore/collections.md
 
@@ -32,6 +35,7 @@ https://medium.com/tech-insights/how-to-deploy-angular-apps-to-github-pages-gh-p
 
 # Angular/Fire Push PWA
 https://medium.com/mighty-ghost-hack/angular-8-firebase-cloud-messaging-push-notifications-cc80d9b36f82
+
 
 # set Upstream with Parent:
 git remote add upstream https://github.com/ilyasahmedshaikh/mumm-app.git
