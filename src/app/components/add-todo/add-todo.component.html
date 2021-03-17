@@ -8,21 +8,18 @@
       </div>
       <div class="col-12 scrollmenu">
         <div class="section-heading pt-4">
-          <h3>Kindergartens</h3>
+          <h6>Kindergartens</h6>
         </div>
-        <div class="item"
-            *ngFor="let item of categories"
-            (click)="categoryClicked(item)"
-            [ngClass]="{'selected': selectedCategory.id == item.id}"
-        >
-            <div class="image-container">
-                <span class="check">
-                    <i class="fas fa-check-circle"></i>
-                </span>
+        <div class="item" *ngFor="let item of categories" (click)="categoryClicked(item)"
+          [ngClass]="{'selected': selectedCategory.id == item.id}">
+          <div class="image-container">
+            <span class="check">
+              <i class="fas fa-check-circle"></i>
+            </span>
 
-                <img class="large" src={{item.image}} alt="Category">
-            </div>
-            <p>{{item.name}}</p>
+            <img class="large" src={{item.image}} alt="Category">
+          </div>
+          <p>{{item.name}}</p>
         </div>
       </div>
     </div>
@@ -32,7 +29,7 @@
           <div class="form-group">
             <label>Topic</label>
             <input type="text" class="form-control" id="inputAddress" placeholder="Topic name">
-        </div>
+          </div>
         </div>
       </div>
       <div class="col-12">

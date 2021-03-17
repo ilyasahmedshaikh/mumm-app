@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
     { path: '/create-kindergarten', name: 'Create Kindergarten'},
     { path: '/create-craftman', name: 'Create Craftman'},
     { path: '/add-todo', name: 'Add New Todo'},
-    { path: '/edit-todo', name: 'Edit Todo'},
     { path: '/login', name: 'Login'},
   ];
 
