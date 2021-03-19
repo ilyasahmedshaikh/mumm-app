@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiCallService } from '../../core/http/api-call/api-call.service';
 
 @Component({
   selector: 'app-homepage',
@@ -25,13 +26,27 @@ export class HomepageComponent implements OnInit {
     { id: 6, name: "Gardening" },
   ]
 
-  constructor() { }
+  constructor(
+    private apiCallService: ApiCallService
+  ) { }
 
   ngOnInit(): void {
+    let data = {
+      name: "Awais",
+      contact: "033127370765"
+    }
+
+    this.getAllKindergartens();
   }
 
   getRandom() {
     return Math.floor(Math.random() * 5) + 1;
+  }
+
+  getAllKindergartens() {
+    this.apiCallService.getAll('kindergartens').subscribe(res => {
+      console.log(res);
+    })
   }
 
 }
