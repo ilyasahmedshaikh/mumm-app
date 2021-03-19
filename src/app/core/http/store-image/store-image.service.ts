@@ -55,4 +55,8 @@ export class StoreImageService {
     return this.preview;
   }
 
+  resetPreviewImage() {
+    this.preview = "https://i.ibb.co/Sft7ZH9/school-building-vector-icon-illustration-building-landmark-icon-concept-white-isolated-138676-441.jpg";
+  }
+
 }

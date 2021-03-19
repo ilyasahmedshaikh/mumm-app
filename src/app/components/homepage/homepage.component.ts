@@ -8,14 +8,10 @@ import { ApiCallService } from '../../core/http/api-call/api-call.service';
 })
 export class HomepageComponent implements OnInit {
 
+  table: string = 'kindergartens';
   title: string = "Kindergartens"
 
-  kindergartens: any = [
-    { Id: 1, name: "Kindergarten 1", image: "https://cdn.britannica.com/51/141451-050-E76A9D3B/Kindergarten-classroom.jpg", count: 3 },
-    { Id: 2, name: "Kindergarten 2", count: 2 },
-    { Id: 3, name: "Kindergarten 3", image: "https://hamptonprep.org.uk/media/2635-QS_Hampton_Prep-062-1024x683.jpg" },
-    { Id: 4, name: "Kindergarten 4" },
-  ];
+  kindergartens: any = [];
 
   Categories: any = [
     { id: 1, name: "Rooms Cleaning" },
@@ -31,11 +27,6 @@ export class HomepageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let data = {
-      name: "Awais",
-      contact: "033127370765"
-    }
-
     this.getAllKindergartens();
   }
 
@@ -44,8 +35,9 @@ export class HomepageComponent implements OnInit {
   }
 
   getAllKindergartens() {
-    this.apiCallService.getAll('kindergartens').subscribe(res => {
-      console.log(res);
+    this.apiCallService.getAll(this.table).subscribe(res => {
+      // method to format firebase data in pretty form
+      this.kindergartens = this.apiCallService.formatDataListing(res);
     })
   }
 

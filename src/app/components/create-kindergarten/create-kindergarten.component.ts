@@ -50,7 +50,8 @@ export class CreateKindergartenComponent implements OnInit {
 
     let data = {
       ...this.programForm.value, 
-      image: this.imageStore.preview
+      image: this.imageStore.preview,
+      count: 0
     };
 
     this.apiCallService.post(this.table, data).subscribe(res => {
@@ -58,6 +59,7 @@ export class CreateKindergartenComponent implements OnInit {
         this.httpRequest = false;
         alert('Kindergarten Added.');
         this.router.navigateByUrl('/homepage');
+        this.imageStore.resetPreviewImage();
       }
     })
   }
