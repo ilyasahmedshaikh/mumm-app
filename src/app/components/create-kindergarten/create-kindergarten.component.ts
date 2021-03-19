@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { ApiCallService } from '../../core/http/api-call/api-call.service';
+import { StoreImageService } from '../../core/http/store-image/store-image.service';
 
 @Component({
   selector: 'app-create-kindergarten',
@@ -7,24 +12,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateKindergartenComponent implements OnInit {
 
-  preview: any = "../../../../assets/img/img-upload-icon.png";
-  loading: any = "../../../../assets/img/loading.gif";
-  imageUploaded: boolean = false;
+  programForm: FormGroup;
+  table: string = 'kindergartens';
 
-  constructor() { }
+  loading: any = "../../../../assets/img/loading.gif";
+
+  httpRequest: boolean = false;
+
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private apiCallService: ApiCallService,
+    public imageStore: StoreImageService
+  ) { }
 
   ngOnInit(): void {
+    this.formInit();
   }
 
+  formInit() {
+    this.programForm = this.fb.group({
+      name: ['', Validators.required],
+      contact: ['', Validators.required],
+      description: ['', Validators.required],
+    });
+  }
+  
   readURL(event: Event): void {
-    if (event.target['files'] && event.target['files'][0]) {
-      const file = event.target['files'][0];
+    this.imageStore.readURL(event);
 
-      const reader = new FileReader();
-      reader.onload = e => this.preview = reader.result;
+    // store image in DB and get store URL
+    this.imageStore.uploadFile(event);
+  }
 
-      reader.readAsDataURL(file);
-    }
+  save() {
+    this.httpRequest = true;
+
+    let data = {
+      ...this.programForm.value, 
+      image: this.imageStore.preview
+    };
+
+    this.apiCallService.post(this.table, data).subscribe(res => {
+      if (res) {
+        this.httpRequest = false;
+        alert('Kindergarten Added.');
+        this.router.navigateByUrl('/homepage');
+      }
+    })
   }
 
 }
