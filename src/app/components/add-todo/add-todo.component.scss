@@ -1,4 +1,4 @@
-@import '../../../styles.scss';
+@import "../../../styles.scss";
 
 .add-todo-screen {
   padding-top: 20px;
@@ -10,48 +10,57 @@
     }
   }
   .scrollmenu {
-    @include scroll-menu($width: 28%, $padding: 14px, $background: $white, $color: $darkDefault);
+    @include scroll-menu(
+      $width: 28%,
+      $padding: 14px,
+      $background: $white,
+      $color: $darkDefault
+    );
     .section-heading {
-      h3 {
-        font-size: 21px;
+      h6 {
+        font-size: 17px;
         font-weight: 600;
         margin-bottom: 0px;
       }
     }
     .image-container {
-        background-color: $lightGray;
+      background-color: $lightGray;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      position: relative;
+      margin: auto;
+      img {
         width: 90px;
         height: 90px;
         border-radius: 50%;
-        position: relative;
-        margin: auto;
-        img {
-          width: 90px;
-          height: 90px;
-          border-radius: 50%;
-          object-fit: cover;
-          object-position: center;
-        }
+        object-fit: cover;
+        object-position: center;
+      }
     }
     p {
-        font-size: 14px;
-        padding: 5px 0 0 0;
-        white-space: pre-wrap;
+      font-size: 14px;
+      padding: 5px 0 0 0;
+      white-space: pre-wrap;
     }
-}
+  }
 
-.check {
+  .check {
     position: absolute;
     right: 0;
     top: 5px;
     font-size: 18px;
     color: $green;
     visibility: hidden;
-}
-
-.selected {
-    .check {
-        visibility: visible;
+    i {
+      background-color: #fff;
+      border-radius: 50%;
     }
-}
+  }
+
+  .selected {
+    .check {
+      visibility: visible;
+    }
+  }
 }

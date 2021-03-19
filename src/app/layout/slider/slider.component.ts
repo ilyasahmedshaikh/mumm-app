@@ -12,7 +12,7 @@ export class SliderComponent implements OnInit {
   @Input('data') data: any = [];
   @Input('title') title: any;
 
-  placeholderImage: any = "../../../assets/img/default-kindergarten.png"
+  placeholderImage: any = "./assets/img/default-kindergarten.png"
 
   backBtnState: boolean = false;
 

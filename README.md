@@ -36,7 +36,6 @@ https://medium.com/tech-insights/how-to-deploy-angular-apps-to-github-pages-gh-p
 # Angular/Fire Push PWA
 https://medium.com/mighty-ghost-hack/angular-8-firebase-cloud-messaging-push-notifications-cc80d9b36f82
 
-
 # set Upstream with Parent:
 git remote add upstream https://github.com/ilyasahmedshaikh/mumm-app.git
 
@@ -48,3 +47,12 @@ git rebase upstream/main
 
 # push the updated got changes with your repo/branch
 git push origin main
+
+# gh-pages
+https://www.geeksforgeeks.org/deployment-of-angular-application-using-github-pages/
+
+## 1. Production Build the Application using:
+> ng build --prod --base-href "https://ilyasahmedshaikh.github.io/mumm-app/"
+
+## 2. create the gh-pages branch, also upload the build and bundled code to this branch using :
+> ngh --dir dist/Mumm

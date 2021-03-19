@@ -5,11 +5,7 @@
     .different-categories {
       padding-top: 20px;
       .heading {
-				h1 {
-					font-size: 21px;
-					font-weight: 600;
-					margin-bottom: 0px;
-				}
+				@include typography($fontSize: 21px, $fontWeight: 600, $color: $lightDefault, $padding: 0);
 		  }
       .category {
         background-color: $darkDefault;

@@ -3,8 +3,20 @@
         <div class="heading pt-4">
             <h1>Kindergarten</h1>
         </div>
-    
-        <form class="pt-4">
+
+        <div class="row justify-content-center py-4">
+          <div class="add-img">
+            <form>
+                <input class="d-none" type="file" accept="image/*" #file (change)="readURL($event)">
+                <a (click)="file.click()">
+                    <img *ngIf="!imageUploaded" src={{preview}}>
+                    <img *ngIf="imageUploaded" src={{loading}}>
+                </a>
+            </form>
+        </div>
+      </div>
+
+        <form>
             <div class="form-group">
                 <label>Name</label>
                 <input type="text" class="form-control" id="inputAddress" placeholder="Name">
