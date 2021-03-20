@@ -8,7 +8,8 @@ export class ConfigService {
   tables: any = { 
     categoriesTable: 'categories',
     kindergartensTable: 'kindergartens',
-    craftmanTable: 'craftmans' 
+    craftmanTable: 'craftmans',
+    todoTable: 'todos',
   }
 
   constructor() { }

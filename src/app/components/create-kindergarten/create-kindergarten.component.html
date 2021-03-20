@@ -32,15 +32,12 @@
                 <textarea class="form-control" rows="6" placeholder="Description" formControlName="description"></textarea>
             </div>
 
-            <button class="rounded-btn w-100 mt-4" 
-                *ngIf="!httpRequest"
+            <button class="rounded-btn w-100 mt-4"
                 (click)="save()" 
                 [disabled]="programForm.invalid" 
                 [ngClass]="{'disable-opacity': programForm.invalid}">
                 Create Kindergarten
             </button>
-
-            <img class="loading" *ngIf="httpRequest" src={{loading}}>
         </form>
     </div>
 </div>
