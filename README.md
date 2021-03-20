@@ -7,6 +7,13 @@ ng serve --host 0.0.0.0 --disable-host-check
 # Reactive Forms
 https://www.digitalocean.com/community/tutorials/angular-reactive-forms-introduction
 
+# Implementing global loader Interceptor for Http Calls
+https://gist.github.com/578b047ca6734dfcf9c63ce5f92bf7ae
+
+# Http Token Interceptor angular
+https://gist.github.com/muhammadawaisshaikh/40dff47dd24ed87772b2c0daad57b634
+
+
 # AngularFire
 https://github.com/angular/angularfire
 https://github.com/angular/angularfire/blob/master/docs/install-and-setup.md
@@ -36,19 +43,21 @@ https://medium.com/tech-insights/how-to-deploy-angular-apps-to-github-pages-gh-p
 # Angular/Fire Push PWA
 https://medium.com/mighty-ghost-hack/angular-8-firebase-cloud-messaging-push-notifications-cc80d9b36f82
 
-# set Upstream with Parent:
+# Get updated work from orignal to forked repo:
+
+## set Upstream with Parent:
 git remote add upstream https://github.com/ilyasahmedshaikh/mumm-app.git
 
-# Fetch Forked Repo
+## Fetch Forked Repo
 git fetch upstream
 
-# Rebase your repo/branch with parent one
+## Rebase your repo/branch with parent one
 git rebase upstream/main
 
-# push the updated got changes with your repo/branch
+## push the updated got changes with your repo/branch
 git push origin main
 
-# gh-pages
+# gh-pages (Build)
 https://www.geeksforgeeks.org/deployment-of-angular-application-using-github-pages/
 
 ## 1. Production Build the Application using:
