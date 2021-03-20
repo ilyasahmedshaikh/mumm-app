@@ -15,6 +15,7 @@ export class AddTodoComponent implements OnInit {
 
   programForm: FormGroup;
   kindergartens: any = [];
+  Categories: any = [];
   selectedKindergartens: any = [];
 
   constructor(
@@ -27,12 +28,14 @@ export class AddTodoComponent implements OnInit {
   ngOnInit(): void {
     this.formInit();
     this.getAllKindergartens();
+    this.getAllCategories();
   }
 
   formInit() {
     this.programForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
+      category: ['', Validators.required],
     });
   }
 
@@ -48,6 +51,13 @@ export class AddTodoComponent implements OnInit {
     this.apiCallService.getAll(this.config.tables.kindergartensTable).subscribe(res => {
       // method to format firebase data in pretty form
       this.kindergartens = this.apiCallService.formatDataListing(res);
+    })
+  }
+
+  getAllCategories() {
+    this.apiCallService.getAll(this.config.tables.categoriesTable).subscribe(res => {
+      // method to format firebase data in pretty form
+      this.Categories = this.apiCallService.formatDataListing(res);
     })
   }
 

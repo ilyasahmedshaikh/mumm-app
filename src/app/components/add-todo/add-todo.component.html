@@ -36,6 +36,14 @@
           </div>
         </div>
         <div class="col-12">
+          <div class="form-group">
+            <label>Categories</label>
+            <select class="form-control" formControlName="category">
+              <option value={{item.Id}} *ngFor="let item of Categories">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12">
           <div class="description">
             <div class="form-group">
               <label>Description</label>
