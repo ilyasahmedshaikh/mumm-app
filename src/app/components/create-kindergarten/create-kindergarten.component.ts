@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
 import { StoreImageService } from '../../core/http/store-image/store-image.service';
 
@@ -13,15 +14,13 @@ import { StoreImageService } from '../../core/http/store-image/store-image.servi
 export class CreateKindergartenComponent implements OnInit {
 
   programForm: FormGroup;
-  table: string = 'kindergartens';
 
   loading: any = "../../../../assets/img/loading.gif";
-
-  httpRequest: boolean = false;
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
+    private config: ConfigService,
     private apiCallService: ApiCallService,
     public imageStore: StoreImageService
   ) { }
@@ -46,17 +45,14 @@ export class CreateKindergartenComponent implements OnInit {
   }
 
   save() {
-    this.httpRequest = true;
-
     let data = {
       ...this.programForm.value, 
       image: this.imageStore.preview,
       count: 0
     };
 
-    this.apiCallService.post(this.table, data).subscribe(res => {
+    this.apiCallService.post(this.config.tables.kindergartens, data).subscribe(res => {
       if (res) {
-        this.httpRequest = false;
         alert('Kindergarten Added.');
         this.router.navigateByUrl('/homepage');
         this.imageStore.resetPreviewImage();
