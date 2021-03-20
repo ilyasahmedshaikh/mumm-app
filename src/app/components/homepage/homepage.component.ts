@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
 
 @Component({
@@ -8,26 +9,19 @@ import { ApiCallService } from '../../core/http/api-call/api-call.service';
 })
 export class HomepageComponent implements OnInit {
 
-  table: string = 'kindergartens';
   title: string = "Kindergartens"
 
   kindergartens: any = [];
-
-  Categories: any = [
-    { id: 1, name: "Rooms Cleaning" },
-    { id: 2, name: "Wooden Works" },
-    { id: 3, name: "Tank Cleaning" },
-    { id: 4, name: "Dusting" },
-    { id: 5, name: "Ground Cleaning" },
-    { id: 6, name: "Gardening" },
-  ]
+  Categories: any = []
 
   constructor(
+    private config: ConfigService,
     private apiCallService: ApiCallService
   ) { }
 
   ngOnInit(): void {
     this.getAllKindergartens();
+    this.getAllCategories();
   }
 
   getRandom() {
@@ -35,9 +29,16 @@ export class HomepageComponent implements OnInit {
   }
 
   getAllKindergartens() {
-    this.apiCallService.getAll(this.table).subscribe(res => {
+    this.apiCallService.getAll(this.config.tables.kindergartensTable).subscribe(res => {
       // method to format firebase data in pretty form
       this.kindergartens = this.apiCallService.formatDataListing(res);
+    })
+  }
+
+  getAllCategories() {
+    this.apiCallService.getAll(this.config.tables.categoriesTable).subscribe(res => {
+      // method to format firebase data in pretty form
+      this.Categories = this.apiCallService.formatDataListing(res);
     })
   }
 
