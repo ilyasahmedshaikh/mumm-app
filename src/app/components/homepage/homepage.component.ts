@@ -12,7 +12,8 @@ export class HomepageComponent implements OnInit {
   title: string = "Kindergartens"
 
   kindergartens: any = [];
-  Categories: any = []
+  Categories: any = [];
+  Todos: any = [];
 
   constructor(
     private config: ConfigService,
@@ -22,6 +23,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.getAllKindergartens();
     this.getAllCategories();
+    this.getAllTodos();
   }
 
   getRandom() {
@@ -39,6 +41,24 @@ export class HomepageComponent implements OnInit {
     this.apiCallService.getAll(this.config.tables.categoriesTable).subscribe(res => {
       // method to format firebase data in pretty form
       this.Categories = this.apiCallService.formatDataListing(res);
+    })
+  }
+
+  getAllTodos() {
+    this.apiCallService.getAll(this.config.tables.todoTable).subscribe(res => {
+      // method to format firebase data in pretty form
+      this.Todos = this.apiCallService.formatDataListing(res);
+      if(this.kindergartens && this.Todos) this.calculateCount();
+    })
+  }
+
+  calculateCount() {
+    this.Todos.map(todo => {
+      this.kindergartens.map((kindergarten, i) => {
+        if (todo.kindergartens.includes(kindergarten.Id)) {
+          return kindergarten.count = kindergarten.count+1;
+        }
+      })
     })
   }
 
