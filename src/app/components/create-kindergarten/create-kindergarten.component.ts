@@ -51,7 +51,7 @@ export class CreateKindergartenComponent implements OnInit {
       count: 0
     };
 
-    this.apiCallService.post(this.config.tables.kindergartens, data).subscribe(res => {
+    this.apiCallService.post(this.config.tables.kindergartensTable, data).subscribe(res => {
       if (res) {
         alert('Kindergarten Added.');
         this.router.navigateByUrl('/homepage');

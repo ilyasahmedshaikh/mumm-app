@@ -16,7 +16,7 @@
                 <img *ngIf="item.image" class="large" src={{item.image}} alt="Category">
                 <img *ngIf="!item.image" class="large" src={{placeholderImage}} alt="Category">
             </div>
-            <p>{{item.name}}</p>
+            <p class="text-truncate">{{item.name}}</p>
         </div>
     </div>
     <div *ngIf="data.length == 0">
