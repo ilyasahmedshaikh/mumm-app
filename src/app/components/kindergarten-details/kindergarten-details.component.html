@@ -10,12 +10,13 @@
       <div class="row">
         <div class="col-4 text-center">
           <div class="avatar">
-            <img src="https://cdn.britannica.com/51/141451-050-E76A9D3B/Kindergarten-classroom.jpg" alt="avatar">
+            <img src="{{kinder.image}}" alt="avatar">
           </div>
         </div>
         <div class="col-8">
           <div class="text">
-            <h4>Mummi</h4>
+            <h4>{{kinder.name}}</h4>
+            <p class="text-muted">{{kinder.contact}}</p>
           </div>
         </div>
       </div>
@@ -26,27 +27,34 @@
             <h4>Todo List</h4>
           </div>
 
-          <div class="col-12"
-            *ngFor="let item of Todo"
-            [routerLink]="['/todo-details']"
-          >
-            <div class="card mt-3">
-              <div class="card-body p-3">
-                <div class="row">
-                  <div class="col-10">
-                    <h6 class="d-flex justify-content-between">
-                      <span>{{item.topic}}</span>
-                      <span class="date font-weight-light text-muted">{{item.date}}</span>
-                    </h6>
-                    <p class="pt-1">{{item.category}}</p>
-                  </div>
-                  <div class="col-2 arrow">
-                    <i class="fas fa-chevron-right text-muted"></i>
+          <div *ngIf="Todos.length > 0" class="w-100">
+            <div class="col-12"
+              *ngFor="let item of Todos"
+              [routerLink]="['/todo-details']"
+            >
+              <div class="card mt-3">
+                <div class="card-body p-3">
+                  <div class="row">
+                    <div class="col-10">
+                      <h6 class="d-flex justify-content-between">
+                        <span>{{item.name}}</span>
+                        <span class="date font-weight-light text-muted">{{item.created_at | date: 'mediumDate'}}</span>
+                      </h6>
+                      <p class="pt-1">{{getCategoryName(item.category)}}</p>
+                    </div>
+                    <div class="col-2 arrow">
+                      <i class="fas fa-chevron-right text-muted"></i>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="col-12" *ngIf="Todos.length == 0">
+            <p class="text-muted text-center py-4">No Todos Found.</p>
+          </div>
+
         </div>
       </div>
     </div>
