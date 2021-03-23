@@ -23,7 +23,6 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.getAllKindergartens();
     this.getAllCategories();
-    this.getAllTodos();
   }
 
   getRandom() {
@@ -34,6 +33,9 @@ export class HomepageComponent implements OnInit {
     this.apiCallService.getAll(this.config.tables.kindergartensTable).subscribe(res => {
       // method to format firebase data in pretty form
       this.kindergartens = this.apiCallService.formatDataListing(res);
+
+      // getting all todos to perform filteration
+      this.getAllTodos();
     })
   }
 
@@ -48,6 +50,7 @@ export class HomepageComponent implements OnInit {
     this.apiCallService.getAll(this.config.tables.todoTable).subscribe(res => {
       // method to format firebase data in pretty form
       this.Todos = this.apiCallService.formatDataListing(res);
+      
       if(this.kindergartens && this.Todos) this.calculateCount();
     })
   }
@@ -60,6 +63,14 @@ export class HomepageComponent implements OnInit {
         }
       })
     })
+    this.sortMaxCounted();
+  }
+
+  sortMaxCounted() {
+    let haveCount = this.kindergartens.filter(k => k.count > 0);
+    let dontHaveCount = this.kindergartens.filter(k => k.count == 0);
+
+    this.kindergartens = [...haveCount , ...dontHaveCount];
   }
 
 }
