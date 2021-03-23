@@ -36,13 +36,12 @@ export class StoreImageService {
         this.downloadURL = fileRef.getDownloadURL();
         this.downloadURL.subscribe(res => {
           this.preview = res;
-
+          console.log(this.preview);
           this.imageUploaded = !this.imageUploaded;
         });
       })
     )
     .subscribe();
-    return this.preview;
   }
 
   readURL(event: Event): void {

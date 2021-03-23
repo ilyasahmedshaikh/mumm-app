@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
+import { StoreImageService } from '../../core/http/store-image/store-image.service';
+import { LoginService } from '../../core/services/login/login.service';
 
 @Component({
   selector: 'app-todo-details',
@@ -18,6 +20,8 @@ export class TodoDetailsComponent implements OnInit {
   todo: any = {};
   Comments: any = [];
   Categories: any = [];
+  loggedInUser: any = '';
+  commentImage: any = '';
 
   constructor(
     private fb: FormBuilder,
@@ -26,11 +30,15 @@ export class TodoDetailsComponent implements OnInit {
     private location: Location,
     private router : Router,
     private backNavigateService: BackNavigateService,
+    public imageStore: StoreImageService,
+    private checkLogin: LoginService,
   ) {
     this.todo = this.router.getCurrentNavigation().extras.state.data;
   }
-
+  
   ngOnInit(): void {
+    this.loggedInUser = this.checkLogin.getUserData();
+
     this.getAllCategories();
 
     this.backNavigateService.back.subscribe(res => {
@@ -63,17 +71,20 @@ export class TodoDetailsComponent implements OnInit {
   }
 
   getCategoryName(id) {
-    let result = this.Categories.find( ({ Id }) => Id === id );
-    return result.name;
+    if (id) {
+      let result = this.Categories.find( ({ Id }) => Id === id );
+      return result.name;
+    }
   }
 
   addComment() {
     let data = {
       ...this.programForm.value,
       todoId: this.todo.Id,
-      userId: '-MWU1Dv678XvaVF3AafW',
-      userName: 'Amir',
+      userId: this.loggedInUser.Id,
+      userName: this.loggedInUser.name,
       created_at: new Date(),
+      image: this.imageStore.preview
     }
 
     this.apiCallService.post(this.config.tables.commentsTable, data).subscribe(res => {
@@ -98,6 +109,12 @@ export class TodoDetailsComponent implements OnInit {
         }
       });
     })
+  }
+
+  readURL(event: Event): void {
+    // store image in DB and get store URL
+    this.imageStore.uploadFile(event);
+    
   }
 
 }

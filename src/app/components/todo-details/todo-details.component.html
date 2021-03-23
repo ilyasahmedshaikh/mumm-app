@@ -34,6 +34,7 @@
             <div class="col-9 pl-0">
               <h6>{{comment.userName}} <small class="float-right">{{comment.created_at | date: 'mediumDate'}}</small></h6>
               <p class="comment">{{comment.comment}}</p>
+              <img class="comment-content-image" *ngIf="comment.image" src={{comment.image}} />
             </div>
           </div>
         </div>
@@ -51,14 +52,14 @@
         </form>
 
         <div class="add-img">
-          <input type="file" id="img" name="img" accept="image/*">
+          <input type="file" accept="image/*" (change)="readURL($event)" />
         </div>
 
         <div class="comment-btn">
           <button class="rounded-btn w-100 mt-4"
             (click)="addComment()" 
-            [disabled]="programForm.invalid" 
-            [ngClass]="{'disable-opacity': programForm.invalid}">
+            [disabled]="programForm.invalid && imageStore.imageUploaded" 
+            [ngClass]="{'disable-opacity': programForm.invalid && imageStore.imageUploaded}">
             Comment
           </button>
         </div>

@@ -54,6 +54,15 @@
     .comment {
       font-size: 15px;
     }
+    .comment-content-image {
+      margin-top: 15px;
+      width: 90%;
+      height: 150px;
+      border-radius: 7px;
+      object-fit: cover;
+      object-position: center;
+      box-shadow: 0 0 10px #eaeaea;
+    }
   }
   .comment-form {
     label {
