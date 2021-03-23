@@ -16,7 +16,7 @@
             <input type="password" class="form-control" formControlName="password">
           </div>
 
-          <div class="row">
+          <!-- <div class="row">
               <div class="col-6">
                   <div class="form-group form-check">
                       <input type="checkbox" class="form-check-input">
@@ -29,10 +29,10 @@
                       <a routerLink="/forget">Forgot Password ?</a>
                   </div>
               </div>
-          </div>
+          </div> -->
 
           <button (click)="login()" 
-            class="rounded-btn w-100 mt-3"
+            class="rounded-btn w-100 mt-4"
             [disabled]="programForm.invalid" 
             [ngClass]="{'disable-opacity': programForm.invalid}">
             Log In
@@ -40,7 +40,8 @@
 
           <div class="account-text pt-3 text-center">
               <span>Don't hane an Account?</span>
-              <a routerLink="/signup">Sign Up</a>
+              <a href="mailto:ilyasahmed081@gmail.com">Contact Admin</a>
+              <!-- <a routerLink="/signup">Sign Up</a> -->
           </div>
       </form>
   </div>

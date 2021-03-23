@@ -44,8 +44,6 @@ export class LoginComponent implements OnInit {
 
     this.auth.signInWithEmailAndPassword(email, password)
     .then(value => {
-      console.log(value);
-
       this.apiCallService.getAll(this.config.tables.userTable).subscribe(res => {
         // method to format firebase data in pretty form
         this.Users = this.apiCallService.formatDataListing(res);
