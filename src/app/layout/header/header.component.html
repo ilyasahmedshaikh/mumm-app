@@ -13,7 +13,7 @@
             </a>
         </div>
 
-        <div class="important-todos" (click)="toggleBack()">
+        <div class="important-todos" (click)="toggleBack()" *ngIf="loginStatus">
             <a routerLink="/important-todos">
                 <i class="fas fa-exclamation-circle"></i>
             </a>
