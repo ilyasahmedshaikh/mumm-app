@@ -17,25 +17,45 @@
             <span class="text-black-50">{{todo.created_at | date: 'mediumDate'}}</span>
           </p>
         </div>
-        <div class="description">
+
+        <div class="description border-bottom">
           <p>{{todo.description}}</p>
         </div>
-        <hr>
-        <div class="comment">
+
+        <h6 class="pt-3">All Comments</h6>
+        <div class="comments">
+          <div class="row">
+            <div class="col-3">
+              <div class="comment">
+                <p class="avatar-typo">{{"Awais".charAt(0)}}</p>
+              </div>
+            </div>
+
+            <div class="col-9 pl-0">
+              <h6>User Name</h6>
+              <p>your comment here</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="comment-form border-top pt-3">
           <div class="form-group">
-            <label>Comment</label>
+            <label>Add New Comment</label>
             <textarea class="form-control" rows="3" placeholder="Write your comment here.."></textarea>
           </div>
         </div>
+
         <div class="add-img">
           <input type="file" id="img" name="img" accept="image/*">
         </div>
-      </div>
-      <div class="col-12">
+
         <div class="comment-btn">
           <a class="rounded-btn w-100 mt-4">Comment</a>
         </div>
       </div>
+
     </div>
   </div>
 </div>
