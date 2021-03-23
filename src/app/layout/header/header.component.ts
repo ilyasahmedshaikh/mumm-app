@@ -17,15 +17,9 @@ export class HeaderComponent implements OnInit {
   fadeSection: boolean = false;
   backBtnState: boolean = false;
   loginStatus: boolean = false;
+  user_type: string = "";
 
-  routes: any = [
-    { path: '/homepage', name: 'Homepage', display: this.loginStatus },
-    { path: '/create-category', name: 'Create Category', display: this.loginStatus },
-    { path: '/create-kindergarten', name: 'Create Kindergarten', display: this.loginStatus },
-    { path: '/create-craftman', name: 'Create Craftman', display: this.loginStatus },
-    { path: '/add-todo', name: 'Add New Todo', display: this.loginStatus },
-    // { path: '/login', name: 'Login', display: this.loginStatus },
-  ];
+  routes: any = [];
 
   constructor(
     private router: Router,
@@ -40,6 +34,23 @@ export class HeaderComponent implements OnInit {
     });
 
     this.ifLogin();
+  }
+
+  assignRoutes(user_type) {
+    if (user_type == "admin") {
+      this.routes = [
+        { path: '/homepage', name: 'Homepage' },
+        { path: '/create-category', name: 'Create Category' },
+        { path: '/create-kindergarten', name: 'Create Kindergarten' },
+        { path: '/create-craftman', name: 'Create Craftman' },
+        { path: '/add-todo', name: 'Add New Todo' },
+      ]
+    } else {
+      this.routes = [
+        { path: '/homepage', name: 'Homepage' },
+        { path: '/add-todo', name: 'Add New Todo' },
+      ]
+    }
   }
 
   toggleMenu() {
@@ -81,6 +92,9 @@ export class HeaderComponent implements OnInit {
       
       if (this.loginStatus) {
         this.router.navigateByUrl('/homepage');
+
+        this.user_type = this.checkLogin.getUserData().user_type;
+        this.assignRoutes(this.user_type);
       } else {
         this.router.navigateByUrl('/login');
       }
