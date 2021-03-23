@@ -20,6 +20,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { SliderComponent } from './layout/slider/slider.component';
 import { KindergartenDetailsComponent } from './components/kindergarten-details/kindergarten-details.component';
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
+import { ImportantTodosComponent } from './components/important-todos/important-todos.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SignupComponent } from './components/signup/signup.component';
@@ -48,6 +49,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TodoDetailsComponent,
     SignupComponent,
     ForgetComponent,
+    ImportantTodosComponent,
   ],
   imports: [
     BrowserModule,

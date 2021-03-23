@@ -36,6 +36,7 @@ export class AddTodoComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
+      important: [false],
     });
   }
 
