@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { ConfigService } from '../../core/http/config/config.service';
+import { ApiCallService } from '../../core/http/api-call/api-call.service';
+import { StoreImageService } from '../../core/http/store-image/store-image.service';
 
 @Component({
   selector: 'app-create-kindergarten',
@@ -7,24 +13,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateKindergartenComponent implements OnInit {
 
-  preview: any = "../../../../assets/img/img-upload-icon.png";
-  loading: any = "../../../../assets/img/loading.gif";
-  imageUploaded: boolean = false;
+  programForm: FormGroup;
 
-  constructor() { }
+  loading: any = "../../../../assets/img/loading.gif";
+
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private config: ConfigService,
+    private apiCallService: ApiCallService,
+    public imageStore: StoreImageService
+  ) { }
 
   ngOnInit(): void {
+    this.formInit();
   }
 
+  formInit() {
+    this.programForm = this.fb.group({
+      name: ['', Validators.required],
+      contact: ['', Validators.required],
+      description: ['', Validators.required],
+    });
+  }
+  
   readURL(event: Event): void {
-    if (event.target['files'] && event.target['files'][0]) {
-      const file = event.target['files'][0];
+    this.imageStore.readURL(event);
 
-      const reader = new FileReader();
-      reader.onload = e => this.preview = reader.result;
+    // store image in DB and get store URL
+    this.imageStore.uploadFile(event);
+  }
 
-      reader.readAsDataURL(file);
-    }
+  save() {
+    let data = {
+      ...this.programForm.value, 
+      image: this.imageStore.preview,
+      count: 0
+    };
+
+    this.apiCallService.post(this.config.tables.kindergartensTable, data).subscribe(res => {
+      if (res) {
+        alert('Kindergarten Added.');
+        this.router.navigateByUrl('/homepage');
+        this.imageStore.resetPreviewImage();
+      }
+    })
   }
 
 }

@@ -12,15 +12,29 @@
                 <span class="pl-2">Back</span>
             </a>
         </div>
+
+        <div class="important-todos" (click)="toggleBack()">
+            <a routerLink="/important-todos">
+                <i class="fas fa-exclamation-circle"></i>
+            </a>
+        </div>
     </div>
 </div>
 
 <div class="sidebar side" [ngClass]="{'show': sidebar}">
     <ul>
-        <li *ngFor="let route of routes">
+        <li *ngFor="let route of routes" [hidden]="!loginStatus">
             <a (click)="routeTo(route.path)">
                 {{route.name}}
             </a>
+        </li>
+
+        <li *ngIf="!loginStatus" (click)="toggleMenu()">
+            <a routerLink="/login">Login</a>
+        </li>
+
+        <li *ngIf="loginStatus">
+            <a (click)="logout()"><i class="fas fa-power-off pr-2"></i> Logout</a>
         </li>
 
         <div class="bottom-thing">

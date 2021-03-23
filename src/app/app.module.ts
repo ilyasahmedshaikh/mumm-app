@@ -5,6 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
+// for token interceptor 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptorService } from './core/interceptors/loader-interceptor/loader-interceptor.service';
+
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { CreateKindergartenComponent } from './components/create-kindergarten/create-kindergarten.component';
@@ -16,6 +20,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { SliderComponent } from './layout/slider/slider.component';
 import { KindergartenDetailsComponent } from './components/kindergarten-details/kindergarten-details.component';
 import { TodoDetailsComponent } from './components/todo-details/todo-details.component';
+import { ImportantTodosComponent } from './components/important-todos/important-todos.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SignupComponent } from './components/signup/signup.component';
@@ -25,6 +30,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { SharedModule } from './shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -42,7 +48,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     KindergartenDetailsComponent,
     TodoDetailsComponent,
     SignupComponent,
-    ForgetComponent
+    ForgetComponent,
+    ImportantTodosComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,9 +60,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

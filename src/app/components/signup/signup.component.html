@@ -4,7 +4,7 @@
 			<h1>SIGN UP</h1>
 		</div>
 
-		<form class="pt-4">
+		<form class="pt-4" [formGroup]="programForm">
 			<div class="row">
 				<div class="form-group col-md-6">
 					<label>User Name</label>
@@ -25,32 +25,20 @@
 					<label>Password</label>
 					<input type="password" class="form-control" formControlName="password">
 				</div>
-			</div>
 
-			<!-- <a *ngIf="!loader" (click)="signup()" class="rounded-btn w-100 mt-2">Sign Up</a> -->
-			<a class="rounded-btn w-100 mt-2">Sign Up</a>
-
-			<!-- <div *ngIf="loader" class="loader">
-				<img class="loading" src={{loadingImg}} />
-			</div> -->
-		</form>
-
-		<div class="social-bar pt-4">
-			<div class="or">
-				<p>or</p>
-			</div>
-
-			<div class="row justify-content-center pt-2">
-				<div class="icons">
-					<ul>
-						<li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-						<li><a href="#"><i class="fab fa-instagram-square"></i></a></li>
-						<li><a href="#"><i class="fab fa-google-plus-square"></i></a></li>
-						<li><a href="#"><i class="fab fa-snapchat-square"></i></a></li>
-					</ul>
+				<div class="form-group col-md-6">
+					<label>Address (Optional)</label>
+					<input type="text" class="form-control" formControlName="address">
 				</div>
 			</div>
-		</div>
+
+			<button (click)="signup()"
+				class="rounded-btn w-100 mt-2"
+				[disabled]="programForm.invalid" 
+				[ngClass]="{'disable-opacity': programForm.invalid}">
+				Sign Up
+			</button>
+		</form>
 
 		<div class="account-text pt-3 text-center">
 			<span>Have an Account?</span>

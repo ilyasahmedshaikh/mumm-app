@@ -30,12 +30,44 @@
   .description {
     p {
       font-size: 16px;
-      padding-top: 22px;
+      padding: 22px 0;
     }
   }
-  .comment {
+  .comments {
+    padding: 0 0 20px 0px;
+    .comment-image {
+      background-color: $darkDefault;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin: auto;
+      color: $white;
+      .avatar-typo {
+        text-transform: uppercase;
+        font-size: 25px;
+        text-align: center;
+        font-weight: 600;
+        padding: 5px;
+        color: $white;
+      }
+    }
+    .comment {
+      font-size: 15px;
+    }
+    .comment-content-image {
+      margin-top: 15px;
+      width: 90%;
+      height: 150px;
+      border-radius: 7px;
+      object-fit: cover;
+      object-position: center;
+      box-shadow: 0 0 10px #eaeaea;
+    }
+  }
+  .comment-form {
     label {
-      font-size: 17px;
+      color: $lightDefault;
+      font-size: 16px;
       font-weight: 500;
     }
   }

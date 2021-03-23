@@ -1,6 +1,6 @@
 @import '../../../styles.scss';
 
-.kindergarten-details-screen {
+.important-todos {
   padding-top: 20px;
   .heading {
     h1 {
@@ -9,9 +9,6 @@
       margin-bottom: 0px;
     }
   }
-
-  .avatar-head {
-    padding-top: 20px;
     .avatar {
       img {
         width: 100px;
@@ -50,5 +47,4 @@
         }
       }
     }
-  }
 }

@@ -1,5 +1,6 @@
 <div class="add-todo-screen">
   <div class="container">
+
     <div class="row">
       <div class="col-12">
         <div class="top-heading">
@@ -10,8 +11,8 @@
         <div class="section-heading pt-4">
           <h6>Kindergartens</h6>
         </div>
-        <div class="item" *ngFor="let item of categories" (click)="categoryClicked(item)"
-          [ngClass]="{'selected': selectedCategory.id == item.id}">
+        <div class="item" *ngFor="let item of kindergartens" (click)="categoryClicked(item)"
+          [ngClass]="{'selected': selectedKindergartens.includes(item.Id)}">
           <div class="image-container">
             <span class="check">
               <i class="fas fa-check-circle"></i>
@@ -19,32 +20,58 @@
 
             <img class="large" src={{item.image}} alt="Category">
           </div>
-          <p>{{item.name}}</p>
+          <p class="text-truncate">{{item.name}}</p>
         </div>
       </div>
     </div>
-    <div class="row mt-4">
-      <div class="col-12">
-        <div class="input">
+
+    <form [formGroup]="programForm">
+      <div class="row mt-4">
+        <div class="col-12">
+          <div class="input">
+            <div class="form-group">
+              <label>Topic</label>
+              <input type="text" class="form-control" placeholder="Topic name" formControlName="name">
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
           <div class="form-group">
-            <label>Topic</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Topic name">
+            <label>Categories</label>
+            <select class="form-control" formControlName="category">
+              <option value={{item.Id}} *ngFor="let item of Categories">{{item.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="description">
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-control" rows="6" placeholder="Write your description here.." formControlName="description"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-check py-2">
+            <input class="form-check-input" type="checkbox" formControlName="important">
+            <label class="form-check-label text-danger">
+              <b>Important Todo</b>
+            </label>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="add-btn">
+            <button class="rounded-btn w-100 mt-2"
+              (click)="save()" 
+              [disabled]="programForm.invalid" 
+              [ngClass]="{'disable-opacity': programForm.invalid}">
+              Create Add Todo
+            </button>
           </div>
         </div>
       </div>
-      <div class="col-12">
-        <div class="description">
-          <div class="form-group">
-            <label>Description</label>
-            <textarea class="form-control" rows="6" placeholder="Write your description here.."></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="col-12">
-        <div class="add-btn">
-          <a class="rounded-btn w-100 mt-2">Create Add Todo</a>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
 </div>

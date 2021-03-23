@@ -74,3 +74,14 @@ input[type="color"]:focus,
     display: block;
     margin: auto;
 }
+
+.disable-opacity {
+    opacity: 0.5;
+}
+
+.all-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

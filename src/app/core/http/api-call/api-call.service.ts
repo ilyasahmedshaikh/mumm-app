@@ -32,4 +32,18 @@ export class ApiCallService {
     return this.http.delete(`${environment.API_BASE_URL}/${table}/${id}.json`);
   }
 
+  formatDataListing(res) {
+    let data = Object.entries(res);
+    let formatted = [];  
+
+    data.forEach(item => {
+      formatted.push({
+        Id: item[0],
+        ...item[1] as {}
+      })
+    });
+
+    return formatted;
+  }
+
 }

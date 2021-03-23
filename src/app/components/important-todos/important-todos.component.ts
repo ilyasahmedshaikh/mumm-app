@@ -6,14 +6,13 @@ import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
 
 @Component({
-  selector: 'app-kindergarten-details',
-  templateUrl: './kindergarten-details.component.html',
-  styleUrls: ['./kindergarten-details.component.scss']
+  selector: 'app-important-todos',
+  templateUrl: './important-todos.component.html',
+  styleUrls: ['./important-todos.component.scss']
 })
-export class KindergartenDetailsComponent implements OnInit {
+export class ImportantTodosComponent implements OnInit {
 
   backBtnState: boolean = false;
-  kinder: any = {};
   Todos: any = [];
   Categories: any = [];
 
@@ -23,9 +22,7 @@ export class KindergartenDetailsComponent implements OnInit {
     private location: Location,
     private router : Router,
     private backNavigateService: BackNavigateService,
-  ) {
-    this.kinder = this.router.getCurrentNavigation().extras.state.data;
-  }
+  ) { }
 
   ngOnInit() {
     this.getAllCategories();
@@ -52,7 +49,7 @@ export class KindergartenDetailsComponent implements OnInit {
       todos = this.apiCallService.formatDataListing(res);
 
       todos.forEach(element => {
-        if (element.kindergartens.includes(this.kinder.Id)) {
+        if (element.important == true || element.important == 'true') {
           filtered.push(element);
         }
       });
