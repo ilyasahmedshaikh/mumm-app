@@ -23,36 +23,44 @@
         </div>
 
         <h6 class="pt-3">All Comments</h6>
-        <div class="comments">
-          <div class="row">
+        <div class="comments" *ngIf="Comments.length > 0">
+          <div class="row mt-3" *ngFor="let comment of Comments">
             <div class="col-3">
-              <div class="comment">
-                <p class="avatar-typo">{{"Awais".charAt(0)}}</p>
+              <div class="comment-image">
+                <p class="avatar-typo">{{comment.userName.charAt(0)}}</p>
               </div>
             </div>
 
             <div class="col-9 pl-0">
-              <h6>User Name</h6>
-              <p>your comment here</p>
+              <h6>{{comment.userName}} <small class="float-right">{{comment.created_at | date: 'mediumDate'}}</small></h6>
+              <p class="comment">{{comment.comment}}</p>
             </div>
           </div>
         </div>
+        <p class="text-black-50 text-center py-3" *ngIf="Comments.length == 0">No Comments Found.</p>
       </div>
 
       <div class="col-12">
-        <div class="comment-form border-top pt-3">
-          <div class="form-group">
-            <label>Add New Comment</label>
-            <textarea class="form-control" rows="3" placeholder="Write your comment here.."></textarea>
+        <form [formGroup]="programForm">
+          <div class="comment-form border-top pt-3">
+            <div class="form-group">
+              <label>Add New Comment</label>
+              <textarea class="form-control" rows="3" placeholder="Write your comment here.." formControlName="comment"></textarea>
+            </div>
           </div>
-        </div>
+        </form>
 
         <div class="add-img">
           <input type="file" id="img" name="img" accept="image/*">
         </div>
 
         <div class="comment-btn">
-          <a class="rounded-btn w-100 mt-4">Comment</a>
+          <button class="rounded-btn w-100 mt-4"
+            (click)="addComment()" 
+            [disabled]="programForm.invalid" 
+            [ngClass]="{'disable-opacity': programForm.invalid}">
+            Comment
+          </button>
         </div>
       </div>
 

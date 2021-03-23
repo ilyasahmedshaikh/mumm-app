@@ -10,6 +10,7 @@ export class ConfigService {
     kindergartensTable: 'kindergartens',
     craftmanTable: 'craftmans',
     todoTable: 'todos',
+    commentsTable: 'comments',
   }
 
   constructor() { }
