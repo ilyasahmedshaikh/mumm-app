@@ -1,0 +1,50 @@
+@import '../../../styles.scss';
+
+.important-todos {
+  padding-top: 20px;
+  .heading {
+    h1 {
+      font-size: 21px;
+      font-weight: 600;
+      margin-bottom: 0px;
+    }
+  }
+    .avatar {
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        object-fit: cover;
+        object-position: center;
+        box-shadow: 0 0 10px #eaeaea;
+      }
+    }
+    .text {
+      h4 {
+        font-size: 27px;
+        font-weight: 600;
+        padding-top: 14%;
+      }
+    }
+
+    .todo-list {
+      padding-top: 20px;
+      h4 {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      h6 {
+        font-weight: 600;
+        font-size: 17px;
+      }
+      .date {
+        font-size: 15px;
+      }
+      .arrow {
+        i {
+          padding-top: 16px;
+          float: right;
+        }
+      }
+    }
+}
