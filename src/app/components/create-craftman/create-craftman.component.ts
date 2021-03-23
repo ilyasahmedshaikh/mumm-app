@@ -48,9 +48,10 @@ export class CreateCraftmanComponent implements OnInit {
           email: this.programForm.value.email,
           contact: this.programForm.value.contact,
           address: this.programForm.value.address,
+          user_type: 'craftman'
         }
 
-        this.apiCallService.post(this.config.tables.craftmanTable, data).subscribe(res => {
+        this.apiCallService.post(this.config.tables.userTable, data).subscribe(res => {
           if (res) {
             alert('Craftman Added.');
             this.router.navigateByUrl('/homepage');

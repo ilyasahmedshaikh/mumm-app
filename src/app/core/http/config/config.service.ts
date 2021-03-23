@@ -8,7 +8,7 @@ export class ConfigService {
   tables: any = { 
     categoriesTable: 'categories',
     kindergartensTable: 'kindergartens',
-    craftmanTable: 'craftmans',
+    userTable: 'users',
     todoTable: 'todos',
     commentsTable: 'comments',
   }
