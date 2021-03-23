@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigService {
 
-  tables: any = { 
+  public tables: any = { 
     categoriesTable: 'categories',
     kindergartensTable: 'kindergartens',
     userTable: 'users',
