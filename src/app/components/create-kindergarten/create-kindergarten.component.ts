@@ -82,7 +82,8 @@ export class CreateKindergartenComponent implements OnInit {
   update() {
     let data = {
       ...this.programForm.value, 
-      image: this.imageStore.preview
+      image: this.imageStore.preview,
+      count: 0
     };
 
     this.apiCallService.put(this.config.tables.kindergartensTable, this.kindergarten.Id, data).subscribe(res => {
