@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ForgetComponent } from './components/forget/forget.component';
 import { ImportantTodosComponent } from './components/important-todos/important-todos.component';
+import { AllKindergartensComponent } from './components/all-kindergartens/all-kindergartens.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'forget', component: ForgetComponent },
   { path: 'important-todos', component: ImportantTodosComponent },
+  { path: 'all-kindergartens', component: AllKindergartensComponent },
 ];
 
 @NgModule({

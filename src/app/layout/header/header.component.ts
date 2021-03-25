@@ -41,6 +41,7 @@ export class HeaderComponent implements OnInit {
       this.routes = [
         { path: '/homepage', name: 'Homepage' },
         { path: '/create-category', name: 'Create Category' },
+        { path: '/all-kindergartens', name: 'All Kindergartens' },
         { path: '/create-kindergarten', name: 'Create Kindergarten' },
         { path: '/create-craftman', name: 'Create Craftman' },
         { path: '/add-todo', name: 'Add New Todo' },
