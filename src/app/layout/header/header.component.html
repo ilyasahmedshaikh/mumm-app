@@ -14,6 +14,7 @@
         </div>
 
         <div class="important-todos" (click)="toggleBack()" *ngIf="loginStatus">
+            <div class="notifier" *ngIf="notify"></div>
             <a routerLink="/important-todos">
                 <i class="fas fa-exclamation-circle"></i>
             </a>
@@ -22,25 +23,40 @@
 </div>
 
 <div class="sidebar side" [ngClass]="{'show': sidebar}">
-    <ul>
-        <li *ngFor="let route of routes" [hidden]="!loginStatus">
-            <a (click)="routeTo(route.path)">
-                {{route.name}}
-            </a>
-        </li>
 
-        <li *ngIf="!loginStatus" (click)="toggleMenu()">
-            <a routerLink="/login">Login</a>
-        </li>
-
-        <li *ngIf="loginStatus">
-            <a (click)="logout()"><i class="fas fa-power-off pr-2"></i> Logout</a>
-        </li>
-
-        <div class="bottom-thing">
-            <a href="tel:03312737076"><i class="fas fa-question-circle"></i> Need Help ?</a>
+    <div class="side-area">
+        <div class="row">
+            <div class="col-3">
+                <div class="profile-image">
+                    <p class="avatar-typo">{{user.name.charAt(0)}}</p>
+                </div>
+            </div>
+            <div class="col-9 pl-0">
+                <p class="text-white">{{user.name}}</p>
+                <p class="text-white-50">{{user.email}}</p>
+            </div>
         </div>
-    </ul>
+
+        <ul>
+            <li *ngFor="let route of routes" [hidden]="!loginStatus">
+                <a (click)="routeTo(route.path)">
+                    {{route.name}}
+                </a>
+            </li>
+    
+            <li *ngIf="!loginStatus" (click)="toggleMenu()">
+                <a routerLink="/login">Login</a>
+            </li>
+    
+            <li *ngIf="loginStatus">
+                <a (click)="logout()"><i class="fas fa-power-off pr-2"></i> Logout</a>
+            </li>
+    
+            <div class="bottom-thing">
+                <a href="tel:03312737076"><i class="fas fa-question-circle"></i> Need Help ?</a>
+            </div>
+        </ul>
+    </div>
 </div>
 
 

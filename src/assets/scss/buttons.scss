@@ -8,3 +8,11 @@
     margin: auto;
     text-align: center;
 }
+
+.chip-btn {
+    text-decoration: none;
+    background: $lightGray;
+    padding: 5px 15px;
+    border-radius: 25px;
+    font-size: 15px;
+}

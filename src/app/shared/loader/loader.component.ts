@@ -9,7 +9,7 @@ import { LoaderService } from '../../core/services/loader/loader.service';
 export class LoaderComponent implements OnInit {
 
   loading: boolean;
-  loader: any = "../../../../assets/img/loading.gif";
+  loader: any = "assets/img/loading.gif";
 
   constructor(
     private loaderService: LoaderService

@@ -43,7 +43,7 @@ export class ApiCallService {
       })
     });
 
-    return formatted;
+    return formatted.reverse();
   }
 
 }

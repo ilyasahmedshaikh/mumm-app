@@ -1,7 +1,7 @@
 <div class="create-kindergarten-screen">
     <div class="container">
         <div class="heading pt-4">
-            <h1>Kindergarten</h1>
+            <h1>{{title}}</h1>
         </div>
 
         <div class="row justify-content-center py-4">
@@ -33,10 +33,19 @@
             </div>
 
             <button class="rounded-btn w-100 mt-4"
+                *ngIf="!editMode"
                 (click)="save()" 
                 [disabled]="programForm.invalid" 
                 [ngClass]="{'disable-opacity': programForm.invalid}">
                 Create Kindergarten
+            </button>
+
+            <button class="rounded-btn w-100 mt-4"
+                *ngIf="editMode"
+                (click)="update()" 
+                [disabled]="programForm.invalid" 
+                [ngClass]="{'disable-opacity': programForm.invalid}">
+                Update Kindergarten
             </button>
         </form>
     </div>

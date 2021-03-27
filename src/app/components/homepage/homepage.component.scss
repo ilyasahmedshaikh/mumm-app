@@ -24,4 +24,19 @@
         }
       }
     }
+    .scrollmenu {
+      display: flex;
+      @include scroll-menu(
+        $width: 30%,
+        $padding: 14px,
+        $background: $white,
+        $color: $darkDefault
+      );
+      p {
+        &.name{
+          white-space: pre-wrap;
+          line-height: 20px;
+        }
+      }
+    }
 }

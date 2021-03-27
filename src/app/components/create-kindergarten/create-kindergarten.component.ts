@@ -14,6 +14,9 @@ import { StoreImageService } from '../../core/http/store-image/store-image.servi
 export class CreateKindergartenComponent implements OnInit {
 
   programForm: FormGroup;
+  kindergarten: any = '';
+  editMode: boolean = false;
+  title: string = "Create Kindergarten";
 
   loading: any = "../../../../assets/img/loading.gif";
 
@@ -23,10 +26,26 @@ export class CreateKindergartenComponent implements OnInit {
     private config: ConfigService,
     private apiCallService: ApiCallService,
     public imageStore: StoreImageService
-  ) { }
+  ) {
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.kindergarten = this.router.getCurrentNavigation().extras.state.data;
+      this.title = "Edit Kindergarten";
+      this.editMode = true;
+    }
+  }
 
   ngOnInit(): void {
     this.formInit();
+
+    if (this.editMode) {
+      this.imageStore.preview = this.kindergarten.image;
+
+      this.programForm.patchValue({
+        name: this.kindergarten.name,
+        contact: this.kindergarten.contact,
+        description: this.kindergarten.description,
+      });
+    }
   }
 
   formInit() {
@@ -55,6 +74,22 @@ export class CreateKindergartenComponent implements OnInit {
       if (res) {
         alert('Kindergarten Added.');
         this.router.navigateByUrl('/homepage');
+        this.imageStore.resetPreviewImage();
+      }
+    })
+  }
+
+  update() {
+    let data = {
+      ...this.programForm.value, 
+      image: this.imageStore.preview,
+      count: 0
+    };
+
+    this.apiCallService.put(this.config.tables.kindergartensTable, this.kindergarten.Id, data).subscribe(res => {
+      if (res) {
+        alert('Kindergarten Updated.');
+        this.router.navigateByUrl('/all-kindergartens');
         this.imageStore.resetPreviewImage();
       }
     })

@@ -5,8 +5,12 @@
 		<div class="different-categories">
 			<h3 class="heading">Categories</h3>
 
-      <div class="row">
-        <div class="col-4 pt-4" *ngFor="let item of Categories">
+      <div class="scrollmenu">
+        <div class="item" *ngFor="let item of Categories"
+          [routerLink]="['/category-details']"
+          [state]="{data: item}"
+          (click)="toggleBack()"
+        >
           <div class="category"
             [ngClass]="{ 'bg-gradient-1': getRandom() == 1,
               'bg-gradient-2': getRandom() == 2,
@@ -16,7 +20,7 @@
           >
             <p class="avatar-typo">{{item.name.charAt(0)}}</p>
           </div>
-          <p class="text-center pt-2">{{item.name}}</p>
+          <p class="text-center pt-2 name">{{item.name}}</p>
         </div>
       </div>
 

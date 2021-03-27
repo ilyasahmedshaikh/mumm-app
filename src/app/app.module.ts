@@ -25,6 +25,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SignupComponent } from './components/signup/signup.component';
 import { ForgetComponent } from './components/forget/forget.component';
+import { AllKindergartensComponent } from './components/all-kindergartens/all-kindergartens.component';
+import { CategoryDetailsComponent } from './components/category-details/category-details.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
@@ -50,6 +52,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SignupComponent,
     ForgetComponent,
     ImportantTodosComponent,
+    AllKindergartensComponent,
+    CategoryDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ export class ConfigService {
     userTable: 'users',
     todoTable: 'todos',
     commentsTable: 'comments',
+    todoSeenTable: 'todoSeen',
   }
 
   constructor() { }
