@@ -56,7 +56,7 @@ export class CategoryDetailsComponent implements OnInit {
       todos = this.apiCallService.formatDataListing(res);
 
       todos.forEach(element => {
-        if (element.category = this.category.Id) {
+        if (element.category == this.category.Id) {
           filtered.push(element);
         }
       });
