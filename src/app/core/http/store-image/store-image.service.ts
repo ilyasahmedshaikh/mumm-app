@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { LoaderService } from '../../services/loader/loader.service'
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,12 @@ export class StoreImageService {
 
   constructor(
     private storage: AngularFireStorage,
+    public loader: LoaderService
   ) { }
 
   uploadFile(event) {
     this.imageUploaded = !this.imageUploaded;
+    this.loader.isLoading.next(true);
     
     const file = event.target.files[0];
     const filePath = file.name;
@@ -38,6 +41,7 @@ export class StoreImageService {
           this.preview = res;
           console.log(this.preview);
           this.imageUploaded = !this.imageUploaded;
+          this.loader.isLoading.next(false);
         });
       })
     )

@@ -51,7 +51,8 @@ export class TodoDetailsComponent implements OnInit {
 
   formInit() {
     this.programForm = this.fb.group({
-      comment: ['', Validators.required]
+      comment: ['', Validators.required],
+      done: [false],
     });
   }
 
@@ -84,7 +85,13 @@ export class TodoDetailsComponent implements OnInit {
       userId: this.loggedInUser.Id,
       userName: this.loggedInUser.name,
       created_at: new Date(),
-      image: this.imageStore.preview
+    }
+
+    if (this.imageStore.imageUploaded) {
+      data = {
+        ...data,
+        image: this.imageStore.preview
+      }
     }
 
     this.apiCallService.post(this.config.tables.commentsTable, data).subscribe(res => {
@@ -114,7 +121,6 @@ export class TodoDetailsComponent implements OnInit {
   readURL(event: Event): void {
     // store image in DB and get store URL
     this.imageStore.uploadFile(event);
-    
   }
 
 }

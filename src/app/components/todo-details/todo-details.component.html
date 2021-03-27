@@ -49,17 +49,24 @@
               <textarea class="form-control" rows="3" placeholder="Write your comment here.." formControlName="comment"></textarea>
             </div>
           </div>
-        </form>
 
-        <div class="add-img">
-          <input type="file" accept="image/*" (change)="readURL($event)" />
-        </div>
+          <div class="add-img">
+            <input type="file" accept="image/*" (change)="readURL($event)" />
+          </div>
+  
+          <div class="form-check pt-3">
+            <input class="form-check-input" type="checkbox" formControlName="done">
+            <label class="form-check-label text-success">
+              <b>Mark Todo as Done</b>
+            </label>
+          </div>
+        </form>
 
         <div class="comment-btn">
           <button class="rounded-btn w-100 mt-4"
             (click)="addComment()" 
-            [disabled]="programForm.invalid && imageStore.imageUploaded" 
-            [ngClass]="{'disable-opacity': programForm.invalid && imageStore.imageUploaded}">
+            [disabled]="programForm.invalid" 
+            [ngClass]="{'disable-opacity': programForm.invalid}">
             Comment
           </button>
         </div>
