@@ -50,8 +50,22 @@
             </div>
           </div>
 
-          <div class="add-img">
+          <!-- <div class="add-img">
             <input type="file" accept="image/*" (change)="readURL($event)" />
+          </div> -->
+
+          <div class="row justify-content-center py-2">
+            <div class="container">
+              <h5 class="pb-3 text-center">Upload Comment Image</h5>
+            </div>
+            <div class="add-img">
+              <form>
+                <input class="d-none" type="file" accept="image/*" #file (change)="readURL($event)">
+                <a (click)="file.click()">
+                  <img *ngIf="!imageStore.imageUploaded" src={{imageStore.preview}}>
+                </a>
+              </form>
+            </div>
           </div>
   
           <div class="form-check pt-3">
