@@ -15,6 +15,8 @@ export class ImportantTodosComponent implements OnInit {
   backBtnState: boolean = false;
   Todos: any = [];
   Categories: any = [];
+  Comments: any = [];
+  doneTodos: any = [];
 
   constructor(
     private config: ConfigService,
@@ -25,6 +27,7 @@ export class ImportantTodosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getComments();
     this.getAllCategories();
 
     this.backNavigateService.back.subscribe(res => {
@@ -71,6 +74,22 @@ export class ImportantTodosComponent implements OnInit {
   getCategoryName(id) {
     let result = this.Categories.find( ({ Id }) => Id === id );
     return result.name;
+  }
+
+  getComments() {
+    this.apiCallService.getAll(this.config.tables.commentsTable).subscribe(res => {
+      // method to format firebase data in pretty form
+      this.Comments = this.apiCallService.formatDataListing(res);
+      this.filterDoneTodos();
+    })
+  }
+
+  filterDoneTodos() {
+    this.Comments.forEach(comment => {
+      if (comment.done) {
+        this.doneTodos.push(comment.todoId);
+      }
+    });
   }
 
 }
