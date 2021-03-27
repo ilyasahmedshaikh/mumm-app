@@ -27,6 +27,9 @@
           <div class="row mt-3" *ngFor="let comment of Comments">
             <div class="col-3">
               <div class="comment-image">
+                <div class="done-check-icon" *ngIf="comment.done">
+                  <i class="fas fa-check-double text-success"></i>
+                </div>
                 <p class="avatar-typo">{{comment.userName.charAt(0)}}</p>
               </div>
             </div>
