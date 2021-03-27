@@ -25,7 +25,7 @@
 <div class="sidebar side" [ngClass]="{'show': sidebar}">
 
     <div class="side-area">
-        <div class="row">
+        <div class="row" *ngIf="loginStatus">
             <div class="col-3">
                 <div class="profile-image">
                     <p class="avatar-typo">{{user.name.charAt(0)}}</p>
