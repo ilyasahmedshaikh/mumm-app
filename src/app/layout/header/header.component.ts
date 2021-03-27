@@ -88,7 +88,6 @@ export class HeaderComponent implements OnInit {
   routeTo(route) {
     this.router.navigateByUrl(route);
     this.toggleMenu();
-    // this.toggleBack();
   }
 
   toggleBack() {
@@ -142,10 +141,6 @@ export class HeaderComponent implements OnInit {
   }
 
   getTodosSeen() {
-    // this.TodoSeen = this.todosCount.getSeenTodoStatus();
-    console.log("Todos", this.Todos);
-    console.log("TodoSeen", this.TodoSeen);
-
     if (this.Todos.length > 0 && this.TodoSeen.length == 0) {
       this.todosCount.headerImportantNotify.next(true);
     }

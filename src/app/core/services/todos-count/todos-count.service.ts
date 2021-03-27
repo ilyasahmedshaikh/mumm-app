@@ -46,7 +46,6 @@ export class TodosCountService {
       })
       this.data.next(this.TodoSeen);
     })
-    // return this.TodoSeen;
   }
 
 }
