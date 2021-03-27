@@ -90,6 +90,9 @@ export class HomepageComponent implements OnInit {
   sortMaxCounted() {
     let haveCount = this.kindergartens.filter(k => k.count > 0);
     let dontHaveCount = this.kindergartens.filter(k => k.count == 0);
+    
+    // sort in descending order as per count
+    haveCount.sort((a, b) => parseFloat(b.count) - parseFloat(a.count));
 
     this.kindergartens = [...haveCount , ...dontHaveCount];
   }
