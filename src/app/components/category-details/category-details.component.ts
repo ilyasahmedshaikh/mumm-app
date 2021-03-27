@@ -15,7 +15,6 @@ export class CategoryDetailsComponent implements OnInit {
   backBtnState: boolean = false;
   category: any = {};
   Todos: any = [];
-  Categories: any = [];
   Comments: any = [];
   doneTodos: any = [];
 
@@ -31,7 +30,7 @@ export class CategoryDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getComments();
-    
+
     // calling all Todos Now
     this.getAllTodos();
 
@@ -66,11 +65,6 @@ export class CategoryDetailsComponent implements OnInit {
       console.log(this.Todos);
       
     })
-  }
-
-  getCategoryName(id) {
-    let result = this.Categories.find( ({ Id }) => Id === id );
-    return result.name;
   }
 
   getComments() {
