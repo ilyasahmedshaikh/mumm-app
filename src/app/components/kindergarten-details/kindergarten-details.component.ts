@@ -3,6 +3,7 @@ import { Location } from '@angular/common'
 import { Router } from '@angular/router';
 import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
 import { ConfigService } from '../../core/http/config/config.service';
+import { CheckLoginService } from '../../core/services/check-login/check-login.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class KindergartenDetailsComponent implements OnInit {
     private location: Location,
     private router : Router,
     private backNavigateService: BackNavigateService,
+    private login: CheckLoginService
   ) {
     this.kinder = this.router.getCurrentNavigation().extras.state.data;
   }
@@ -61,6 +63,7 @@ export class KindergartenDetailsComponent implements OnInit {
       });
 
       this.Todos = filtered;
+      this.maintainUserSeen();
     })
   }
 
@@ -93,6 +96,22 @@ export class KindergartenDetailsComponent implements OnInit {
         this.doneTodos.push(comment.todoId);
       }
     });
+  }
+
+  maintainUserSeen()
+  {
+    if (this.Todos.length > 0) {
+      let data = {
+        todos: this.Todos.map(todo => todo.Id),
+        userId: this.login.getUserData().Id
+      }
+  
+      this.apiCallService.post(this.config.tables.todoSeenTable, data).subscribe(res => {
+        if (res) {
+          console.log('todo Seen Stored');
+        }
+      })
+    }
   }
 
 }
