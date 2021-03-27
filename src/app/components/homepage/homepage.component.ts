@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
+import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
 
 @Component({
   selector: 'app-homepage',
@@ -10,6 +11,7 @@ import { ApiCallService } from '../../core/http/api-call/api-call.service';
 export class HomepageComponent implements OnInit {
 
   title: string = "Kindergartens"
+  backBtnState: boolean = false;
 
   kindergartens: any = [];
   Categories: any = [];
@@ -17,16 +19,25 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private config: ConfigService,
-    private apiCallService: ApiCallService
+    private apiCallService: ApiCallService,
+    private backNavigateService: BackNavigateService,
   ) { }
 
   ngOnInit(): void {
     this.getAllKindergartens();
     this.getAllCategories();
+
+    this.backNavigateService.back.subscribe(res => {
+      this.backBtnState = res;
+    });
   }
 
   getRandom() {
     return Math.floor(Math.random() * 5) + 1;
+  }
+
+  toggleBack() {
+    this.backNavigateService.toggleBackState();
   }
 
   getAllKindergartens() {

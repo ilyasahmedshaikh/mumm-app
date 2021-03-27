@@ -6,7 +6,11 @@
 			<h3 class="heading">Categories</h3>
 
       <div class="scrollmenu">
-        <div class="item" *ngFor="let item of Categories">
+        <div class="item" *ngFor="let item of Categories"
+          [routerLink]="['/category-details']"
+          [state]="{data: item}"
+          (click)="toggleBack()"
+        >
           <div class="category"
             [ngClass]="{ 'bg-gradient-1': getRandom() == 1,
               'bg-gradient-2': getRandom() == 2,
