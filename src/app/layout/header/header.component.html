@@ -14,6 +14,7 @@
         </div>
 
         <div class="important-todos" (click)="toggleBack()" *ngIf="loginStatus">
+            <div class="notifier" *ngIf="notify"></div>
             <a routerLink="/important-todos">
                 <i class="fas fa-exclamation-circle"></i>
             </a>

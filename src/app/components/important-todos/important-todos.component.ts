@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
+import { CheckLoginService } from '../../core/services/check-login/check-login.service';
+import { TodosCountService } from '../../core/services/todos-count/todos-count.service';
 
 @Component({
   selector: 'app-important-todos',
@@ -24,6 +26,8 @@ export class ImportantTodosComponent implements OnInit {
     private location: Location,
     private router : Router,
     private backNavigateService: BackNavigateService,
+    private login: CheckLoginService,
+    private todosCount: TodosCountService,
   ) { }
 
   ngOnInit() {
@@ -58,6 +62,7 @@ export class ImportantTodosComponent implements OnInit {
       });
 
       this.Todos = filtered;
+      this.maintainUserSeen();
     })
   }
 
@@ -90,6 +95,22 @@ export class ImportantTodosComponent implements OnInit {
         this.doneTodos.push(comment.todoId);
       }
     });
+  }
+
+  maintainUserSeen()
+  {
+    if (this.Todos.length > 0) {
+      let data = {
+        todos: this.Todos.map(todo => todo.Id),
+        userId: this.login.getUserData().Id
+      }
+  
+      this.apiCallService.post(this.config.tables.todoSeenTable, data).subscribe(res => {
+        if (res) {
+          this.todosCount.headerImportantNotify.next(false);
+        }
+      })
+    }
   }
 
 }

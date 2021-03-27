@@ -14,6 +14,5 @@ export class BackNavigateService {
   toggleBackState() {
     this.visible = !this.visible;
     this.back.next(this.visible);
-    console.log("from BackNavigateService", this.visible);
   }
 }

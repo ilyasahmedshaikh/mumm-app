@@ -5,6 +5,7 @@ import{ BackNavigateService } from '../../core/services/back-navigate/back-navig
 import { ConfigService } from '../../core/http/config/config.service';
 import { CheckLoginService } from '../../core/services/check-login/check-login.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
+import { TodosCountService } from '../../core/services/todos-count/todos-count.service';
 
 @Component({
   selector: 'app-kindergarten-details',
@@ -26,7 +27,8 @@ export class KindergartenDetailsComponent implements OnInit {
     private location: Location,
     private router : Router,
     private backNavigateService: BackNavigateService,
-    private login: CheckLoginService
+    private login: CheckLoginService,
+    private todosCount: TodosCountService,
   ) {
     this.kinder = this.router.getCurrentNavigation().extras.state.data;
   }
@@ -100,7 +102,11 @@ export class KindergartenDetailsComponent implements OnInit {
 
   maintainUserSeen()
   {
+    let ifImportantFound = false;
+
     if (this.Todos.length > 0) {
+      if(this.Todos.filter(i => i.important == true).length > 0) ifImportantFound = true;
+
       let data = {
         todos: this.Todos.map(todo => todo.Id),
         userId: this.login.getUserData().Id
@@ -108,7 +114,7 @@ export class KindergartenDetailsComponent implements OnInit {
   
       this.apiCallService.post(this.config.tables.todoSeenTable, data).subscribe(res => {
         if (res) {
-          console.log('todo Seen Stored');
+          if (ifImportantFound) this.todosCount.headerImportantNotify.next(false);
         }
       })
     }

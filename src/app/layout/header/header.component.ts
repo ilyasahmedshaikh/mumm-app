@@ -3,6 +3,9 @@ import { Location } from '@angular/common'
 import { Router } from '@angular/router';
 import { LoginService } from '../../core/services/login/login.service';
 import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
+import { TodosCountService } from '../../core/services/todos-count/todos-count.service';
+import { ConfigService } from '../../core/http/config/config.service';
+import { ApiCallService } from '../../core/http/api-call/api-call.service';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +21,9 @@ export class HeaderComponent implements OnInit {
   backBtnState: boolean = false;
   loginStatus: boolean = false;
   user_type: string = "";
+  Todos: any = [];
+  TodoSeen: any = [];
+  notify: boolean = false;
 
   routes: any = [];
 
@@ -26,6 +32,9 @@ export class HeaderComponent implements OnInit {
     private backNavigateService: BackNavigateService,
     private checkLogin: LoginService,
     private location: Location,
+    private todosCount: TodosCountService,
+    private config: ConfigService,
+    private apiCallService: ApiCallService,
   ) { }
 
   ngOnInit() {
@@ -34,6 +43,17 @@ export class HeaderComponent implements OnInit {
     });
 
     this.ifLogin();
+    this.getAllTodos();
+
+    this.todosCount.getSeenTodoStatus();
+
+    this.todosCount.data.subscribe(res => {
+      this.TodoSeen = res;
+    })
+
+    this.todosCount.headerImportantNotify.subscribe(res => {
+      this.notify = res;
+    })
   }
 
   assignRoutes(user_type) {
@@ -100,6 +120,44 @@ export class HeaderComponent implements OnInit {
         this.router.navigateByUrl('/login');
       }
     })
+  }
+
+  getAllTodos() {
+    let todos = [];
+    let filtered = [];
+
+    this.apiCallService.getAll(this.config.tables.todoTable).subscribe(res => {
+      // method to format firebase data in pretty form
+      todos = this.apiCallService.formatDataListing(res);
+
+      todos.forEach(element => {
+        if (element.important == true || element.important == 'true') {
+          filtered.push(element);
+        }
+      });
+
+      this.Todos = filtered;
+      this.getTodosSeen();
+    })
+  }
+
+  getTodosSeen() {
+    // this.TodoSeen = this.todosCount.getSeenTodoStatus();
+    console.log("Todos", this.Todos);
+    console.log("TodoSeen", this.TodoSeen);
+
+    if (this.Todos.length > 0 && this.TodoSeen.length == 0) {
+      this.todosCount.headerImportantNotify.next(true);
+    }
+
+    if (this.Todos.length > 0 && this.TodoSeen.length > 0) {
+      this.Todos.map(item => {
+        if (this.TodoSeen.includes(item.Id)) {
+          this.todosCount.headerImportantNotify.next(false);
+        }
+      })
+    }
+
   }
 
 }

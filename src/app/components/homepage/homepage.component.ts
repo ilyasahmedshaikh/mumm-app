@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
 import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
-import { CheckLoginService } from '../../core/services/check-login/check-login.service';
+import { TodosCountService } from '../../core/services/todos-count/todos-count.service';
 
 @Component({
   selector: 'app-homepage',
@@ -23,17 +23,22 @@ export class HomepageComponent implements OnInit {
     private config: ConfigService,
     private apiCallService: ApiCallService,
     private backNavigateService: BackNavigateService,
-    private login: CheckLoginService
+    private todosCount: TodosCountService
   ) { }
 
   ngOnInit(): void {
-    this.getSeenTodoStatus();
     this.getAllKindergartens();
     this.getAllCategories();
 
     this.backNavigateService.back.subscribe(res => {
       this.backBtnState = res;
     });
+
+    this.todosCount.getSeenTodoStatus();
+
+    this.todosCount.data.subscribe(res => {
+      this.TodoSeen = res;
+    })
   }
 
   getRandom() {
@@ -87,31 +92,6 @@ export class HomepageComponent implements OnInit {
     let dontHaveCount = this.kindergartens.filter(k => k.count == 0);
 
     this.kindergartens = [...haveCount , ...dontHaveCount];
-  }
-
-  getSeenTodoStatus() {
-    let allSeenTodos = [];
-    let filteredSeenTodos = [];
-    let user = this.login.getUserData();
-
-    this.apiCallService.getAll(this.config.tables.todoSeenTable).subscribe(res => {
-      // method to format firebase data in pretty form
-      allSeenTodos = this.apiCallService.formatDataListing(res);
-      console.log(allSeenTodos);
-      
-      allSeenTodos.map(item => {
-        if (user.Id == item.userId) {
-          filteredSeenTodos.push(item.todos);
-        }
-      })
-
-      // converting array of arrays to array of objects
-      filteredSeenTodos.map((item, i) => {
-        item.map((todo, index) => {
-          this.TodoSeen.push(todo)
-        })
-      })
-    })
   }
 
 }

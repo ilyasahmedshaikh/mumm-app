@@ -154,3 +154,14 @@
 .back-btn a {
     color: $white;
 }
+
+.notifier {
+    width: 10px;
+    height: 10px;
+    background: #e23918;
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    z-index: 1;
+    border-radius: 50%;
+}
