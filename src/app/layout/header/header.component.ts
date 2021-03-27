@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   backBtnState: boolean = false;
   loginStatus: boolean = false;
   user_type: string = "";
+  user: any = {};
   Todos: any = [];
   TodoSeen: any = [];
   notify: boolean = false;
@@ -113,6 +114,7 @@ export class HeaderComponent implements OnInit {
       if (this.loginStatus) {
         this.router.navigateByUrl('/homepage');
 
+        this.user = this.checkLogin.getUserData();
         this.user_type = this.checkLogin.getUserData().user_type;
         this.assignRoutes(this.user_type);
       } else {
