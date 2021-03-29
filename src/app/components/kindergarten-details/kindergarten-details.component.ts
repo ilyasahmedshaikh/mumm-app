@@ -61,8 +61,6 @@ export class KindergartenDetailsComponent implements OnInit {
       todos = this.apiCallService.formatDataListing(res);
 
       todos.map(element => {
-        console.log(element);
-        
         if (element.kindergartens && element.kindergartens.includes(this.kinder.Id)) {
           filtered.push(element);
         }
