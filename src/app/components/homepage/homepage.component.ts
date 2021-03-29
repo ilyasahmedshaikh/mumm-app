@@ -78,7 +78,7 @@ export class HomepageComponent implements OnInit {
   calculateCount() {
     this.Todos.map(todo => {
       this.kindergartens.map((kindergarten, i) => {
-        if (todo.kindergartens.includes(kindergarten.Id) && !this.TodoSeen.includes(todo.Id)) {
+        if (todo.kindergartens && todo.kindergartens.includes(kindergarten.Id) && !this.TodoSeen.includes(todo.Id)) {
           return kindergarten.count = kindergarten.count+1;
         }
       })

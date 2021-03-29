@@ -31,6 +31,8 @@ export class KindergartenDetailsComponent implements OnInit {
     private todosCount: TodosCountService,
   ) {
     this.kinder = this.router.getCurrentNavigation().extras.state.data;
+    console.log(this.kinder);
+    
   }
 
   ngOnInit() {
@@ -58,8 +60,8 @@ export class KindergartenDetailsComponent implements OnInit {
       // method to format firebase data in pretty form
       todos = this.apiCallService.formatDataListing(res);
 
-      todos.forEach(element => {
-        if (element.kindergartens.includes(this.kinder.Id)) {
+      todos.map(element => {
+        if (element.kindergartens && element.kindergartens.includes(this.kinder.Id)) {
           filtered.push(element);
         }
       });

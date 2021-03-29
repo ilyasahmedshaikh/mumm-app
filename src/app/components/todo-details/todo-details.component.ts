@@ -17,6 +17,7 @@ export class TodoDetailsComponent implements OnInit {
 
   programForm: FormGroup;
   backBtnState: boolean = false;
+  commentHaveImg: boolean = false;
   todo: any = {};
   Comments: any = [];
   Categories: any = [];
@@ -87,7 +88,7 @@ export class TodoDetailsComponent implements OnInit {
       created_at: new Date(),
     }
 
-    if (this.imageStore.imageUploaded) {
+    if (this.commentHaveImg) {
       data = {
         ...data,
         image: this.imageStore.preview
@@ -99,6 +100,8 @@ export class TodoDetailsComponent implements OnInit {
         alert('Comment Added.');
         this.programForm.reset();
         this.getComments();
+        this.imageStore.resetPreviewImage();
+        this.commentHaveImg = false;
       }
     })
   }
@@ -121,6 +124,7 @@ export class TodoDetailsComponent implements OnInit {
   readURL(event: Event): void {
     // store image in DB and get store URL
     this.imageStore.uploadFile(event);
+    this.commentHaveImg = true;
   }
 
 }

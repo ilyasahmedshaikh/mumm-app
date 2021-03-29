@@ -14,6 +14,22 @@
         }
 }
 
+@mixin scroll-vertical-2-rows($width, $padding, $background, $color) {
+    background-color: $background;
+    overflow: auto;
+    max-height: 280px;
+    .item {
+        display: inline-block;
+        color: $color;
+        text-align: center;
+        padding: $padding;
+        width: $width;
+        &.active {
+            border-bottom: 3px solid $color;
+        }
+    }
+}
+
 @mixin typography($fontSize, $fontWeight, $color, $padding) {
     font-size: $fontSize;
     font-weight: $fontWeight;

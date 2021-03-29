@@ -5,7 +5,7 @@
 }
 
 .scrollmenu {
-    @include scroll-menu($width: 30%, $padding: 14px, $background: $white, $color: $darkDefault);
+    @include scroll-vertical-2-rows($width: 30%, $padding: 14px, $background: $white, $color: $darkDefault);
     .image-container {
         background-color: $lightGray;
         width: 90px;
