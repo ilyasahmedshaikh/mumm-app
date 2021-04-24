@@ -14,6 +14,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxFlagPickerModule  } from 'ngx-flag-picker';
 
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { CreateKindergartenComponent } from './components/create-kindergarten/create-kindergarten.component';
@@ -85,6 +87,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptorService,
       multi: true
+    },
+    { 
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy 
     }
   ],
   bootstrap: [AppComponent]
