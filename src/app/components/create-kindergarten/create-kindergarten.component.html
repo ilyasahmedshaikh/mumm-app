@@ -1,7 +1,7 @@
 <div class="create-kindergarten-screen">
     <div class="container">
         <div class="heading pt-4">
-            <h1>{{title}}</h1>
+            <h1 translate>{{title}}</h1>
         </div>
 
         <div class="row justify-content-center py-4">
@@ -18,21 +18,21 @@
 
         <form [formGroup]="programForm">
             <div class="form-group">
-                <label>Name</label>
+                <label translate>Name</label>
                 <input type="text" class="form-control" placeholder="Name" formControlName="name">
             </div>
 
             <div class="form-group">
-                <label>Contact</label>
+                <label translate>Contact</label>
                 <input type="text" class="form-control" placeholder="Contact" formControlName="contact">
             </div>
 
             <div class="form-group">
-                <label>Description</label>
+                <label translate>Description</label>
                 <textarea class="form-control" rows="6" placeholder="Description" formControlName="description"></textarea>
             </div>
 
-            <button class="rounded-btn w-100 mt-4"
+            <button class="rounded-btn w-100 mt-4" translate
                 *ngIf="!editMode"
                 (click)="save()" 
                 [disabled]="programForm.invalid" 
@@ -40,7 +40,7 @@
                 Create Kindergarten
             </button>
 
-            <button class="rounded-btn w-100 mt-4"
+            <button class="rounded-btn w-100 mt-4" translate
                 *ngIf="editMode"
                 (click)="update()" 
                 [disabled]="programForm.invalid" 

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-craftman',
@@ -20,6 +21,7 @@ export class CreateCraftmanComponent implements OnInit {
     private auth: AngularFireAuth,
     private config: ConfigService,
     private apiCallService: ApiCallService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { LoginService } from '../../core/services/login/login.service';
@@ -23,7 +24,8 @@ export class LoginComponent implements OnInit {
     private auth: AngularFireAuth,
     private checkLogin: LoginService,
     private config: ConfigService,
-    private apiCallService: ApiCallService
+    private apiCallService: ApiCallService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {

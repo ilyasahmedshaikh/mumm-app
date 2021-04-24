@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
 
@@ -18,6 +19,7 @@ export class CreateCategoryComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private apiCallService: ApiCallService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {

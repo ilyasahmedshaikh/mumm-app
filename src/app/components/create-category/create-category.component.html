@@ -1,16 +1,16 @@
 <div class="create-category-screen">
     <div class="container">
         <div class="heading pt-4">
-            <h1>Category</h1>
+            <h1 translate>Category</h1>
         </div>
     
         <form [formGroup]="programForm" class="pt-4">
             <div class="form-group">
-                <label>Category Name</label>
+                <label translate>Category Name</label>
                 <input type="text" class="form-control" placeholder="Category Name" formControlName="name">
             </div>
 
-            <button class="rounded-btn w-100 mt-4" 
+            <button class="rounded-btn w-100 mt-4" translate
                 (click)="save()" 
                 [disabled]="programForm.invalid" 
                 [ngClass]="{'disable-opacity': programForm.invalid}">

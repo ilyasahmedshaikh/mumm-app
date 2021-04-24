@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
@@ -25,7 +26,8 @@ export class CreateKindergartenComponent implements OnInit {
     private fb: FormBuilder,
     private config: ConfigService,
     private apiCallService: ApiCallService,
-    public imageStore: StoreImageService
+    public imageStore: StoreImageService,
+    private translate: TranslateService
   ) {
     if (this.router.getCurrentNavigation().extras.state) {
       this.kindergarten = this.router.getCurrentNavigation().extras.state.data;
