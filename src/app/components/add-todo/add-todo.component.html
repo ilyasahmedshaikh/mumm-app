@@ -4,12 +4,12 @@
     <div class="row">
       <div class="col-12">
         <div class="top-heading">
-          <h1>Add Todo</h1>
+          <h1 translate>Add New Todo</h1>
         </div>
       </div>
       <div class="col-12 scrollmenu">
         <div class="section-heading pt-4">
-          <h6>Kindergartens</h6>
+          <h6 translate>Kindergartens</h6>
         </div>
         <div class="item" *ngFor="let item of kindergartens" (click)="categoryClicked(item)"
           [ngClass]="{'selected': selectedKindergartens.includes(item.Id)}">
@@ -37,7 +37,7 @@
         </div>
         <div class="col-12">
           <div class="form-group">
-            <label>Categories</label>
+            <label translate>Categories</label>
             <select class="form-control" formControlName="category">
               <option value={{item.Id}} *ngFor="let item of Categories">{{item.name}}</option>
             </select>
@@ -63,11 +63,11 @@
 
         <div class="col-12">
           <div class="add-btn">
-            <button class="rounded-btn w-100 mt-2"
+            <button class="rounded-btn w-100 mt-2" translate
               (click)="save()" 
               [disabled]="programForm.invalid" 
               [ngClass]="{'disable-opacity': programForm.invalid}">
-              Create Add Todo
+              Add Todo
             </button>
           </div>
         </div>

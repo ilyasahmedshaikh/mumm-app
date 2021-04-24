@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common'
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { LoginService } from '../../core/services/login/login.service';
 import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
 import { TodosCountService } from '../../core/services/todos-count/todos-count.service';
@@ -36,6 +37,7 @@ export class HeaderComponent implements OnInit {
     private todosCount: TodosCountService,
     private config: ConfigService,
     private apiCallService: ApiCallService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {

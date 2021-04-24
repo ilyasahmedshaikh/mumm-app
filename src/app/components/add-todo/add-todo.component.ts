@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-todo',
@@ -22,7 +23,8 @@ export class AddTodoComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private config: ConfigService,
-    private apiCallService: ApiCallService
+    private apiCallService: ApiCallService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {

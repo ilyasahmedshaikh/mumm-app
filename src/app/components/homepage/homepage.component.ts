@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
 import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
@@ -23,7 +24,8 @@ export class HomepageComponent implements OnInit {
     private config: ConfigService,
     private apiCallService: ApiCallService,
     private backNavigateService: BackNavigateService,
-    private todosCount: TodosCountService
+    private todosCount: TodosCountService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit(): void {

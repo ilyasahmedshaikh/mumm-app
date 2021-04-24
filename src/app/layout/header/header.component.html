@@ -39,21 +39,21 @@
 
         <ul>
             <li *ngFor="let route of routes" [hidden]="!loginStatus">
-                <a (click)="routeTo(route.path)">
+                <a (click)="routeTo(route.path)" translate>
                     {{route.name}}
                 </a>
             </li>
     
             <li *ngIf="!loginStatus" (click)="toggleMenu()">
-                <a routerLink="/login">Login</a>
+                <a routerLink="/login" translate>Login</a>
             </li>
     
             <li *ngIf="loginStatus">
-                <a (click)="logout()"><i class="fas fa-power-off pr-2"></i> Logout</a>
+                <a (click)="logout()" translate><i class="fas fa-power-off pr-2"></i> Logout</a>
             </li>
     
             <div class="bottom-thing">
-                <a href="tel:03312737076"><i class="fas fa-question-circle"></i> Need Help ?</a>
+                <a href="tel:03312737076" translate><i class="fas fa-question-circle"></i> Need Help ?</a>
             </div>
         </ul>
     </div>

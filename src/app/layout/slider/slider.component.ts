@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
 import { Location } from '@angular/common'
 import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
 
@@ -19,6 +20,7 @@ export class SliderComponent implements OnInit {
   constructor(
     private location: Location,
     private backNavigateService: BackNavigateService,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
