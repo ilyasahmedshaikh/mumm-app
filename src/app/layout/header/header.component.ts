@@ -3,7 +3,7 @@ import { Location } from '@angular/common'
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginService } from '../../core/services/login/login.service';
-import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
+import { BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
 import { TodosCountService } from '../../core/services/todos-count/todos-count.service';
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
@@ -28,6 +28,9 @@ export class HeaderComponent implements OnInit {
   notify: boolean = false;
 
   routes: any = [];
+
+  selectedCountryCode = 'de';
+  countryCodes = ['de', 'us'];
 
   constructor(
     private router: Router,
@@ -156,7 +159,11 @@ export class HeaderComponent implements OnInit {
         }
       })
     }
+  }
 
+  changeSelectedCountryCode(value: string): void {
+    this.selectedCountryCode = value;
+    this.translate.use(this.selectedCountryCode);
   }
 
 }

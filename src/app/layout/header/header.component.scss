@@ -46,7 +46,7 @@
         text-transform: capitalize;
     }
     .side-area {
-        padding: 20% 0 0 5%;
+        padding: 25% 0 0 5%;
         height: 85vh;
         max-height: 85vh;
         overflow-y: auto;
@@ -184,4 +184,12 @@
       padding: 5px;
       color: $white;
     }
+  }
+
+  .lang-select {
+    width: 90px;
+    height: auto;
+    position: absolute;
+    right: 10px;
+    top: 60px;
   }

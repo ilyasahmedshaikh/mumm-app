@@ -25,6 +25,14 @@
 <div class="sidebar side" [ngClass]="{'show': sidebar}">
 
     <div class="side-area">
+        <div class="lang-select">
+            <ngx-flag-picker
+                [selectedCountryCode]="selectedCountryCode"
+                [countryCodes]="countryCodes"
+                (changedCountryCode)="changeSelectedCountryCode($event)">
+            </ngx-flag-picker>
+        </div>
+
         <div class="row" *ngIf="loginStatus">
             <div class="col-3">
                 <div class="profile-image">

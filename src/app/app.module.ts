@@ -12,6 +12,7 @@ import { LoaderInterceptorService } from './core/interceptors/loader-interceptor
 // @ngx-translate
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxFlagPickerModule  } from 'ngx-flag-picker';
 
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
@@ -70,6 +71,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    NgxFlagPickerModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
