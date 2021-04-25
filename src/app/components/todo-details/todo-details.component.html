@@ -1,9 +1,15 @@
 <div class="todo-details-screen">
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div class="col-8">
         <div class="heading">
           <h1>Todo Details</h1>
+        </div>
+      </div>
+      <div class="col-4" *ngIf="user_type == 'admin'">
+        <div class="text-danger text-right" (click)="delete()">
+          <i class="fas fa-trash"></i>
+          <span class="pl-2">Delete</span>
         </div>
       </div>
     </div>

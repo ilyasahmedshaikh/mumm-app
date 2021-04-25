@@ -6,6 +6,15 @@
     position: fixed;
     width: 100%;
     z-index: 999;
+    .logo {
+        img {
+            width: 45px;
+            height: auto;
+            position: absolute;
+            top: 5px;
+            left: 45%;
+        }
+    }
 }
 
 .toggleContainer {

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import{ BackNavigateService } from '../../core/services/back-navigate/back-navigate.service';
 import { ConfigService } from '../../core/http/config/config.service';
 import { ApiCallService } from '../../core/http/api-call/api-call.service';
+import { CheckLoginService } from '../../core/services/check-login/check-login.service';
 
 @Component({
   selector: 'app-category-details',
@@ -18,12 +19,15 @@ export class CategoryDetailsComponent implements OnInit {
   Comments: any = [];
   doneTodos: any = [];
 
+  user_type: string = '';
+
   constructor(
     private config: ConfigService,
     private apiCallService: ApiCallService,
     private location: Location,
     private router : Router,
     private backNavigateService: BackNavigateService,
+    private checkLogin: CheckLoginService,
   ) {
     this.category = this.router.getCurrentNavigation().extras.state.data;
   }
@@ -37,6 +41,8 @@ export class CategoryDetailsComponent implements OnInit {
     this.backNavigateService.back.subscribe(res => {
       this.backBtnState = res;
     });
+
+    this.user_type = this.checkLogin.getUserData().user_type;
   }
 
   toggleBack() {
@@ -81,6 +87,13 @@ export class CategoryDetailsComponent implements OnInit {
         this.doneTodos.push(comment.todoId);
       }
     });
+  }
+
+  delete() {
+    this.apiCallService.delete(this.config.tables.categoriesTable, this.category.Id).subscribe(res => {
+      this.toggleBack();
+      this.router.navigateByUrl('/homepage');
+    })
   }
 
 }
