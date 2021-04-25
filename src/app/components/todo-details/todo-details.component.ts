@@ -24,6 +24,8 @@ export class TodoDetailsComponent implements OnInit {
   loggedInUser: any = '';
   commentImage: any = '';
 
+  user_type: string = '';
+
   constructor(
     private fb: FormBuilder,
     private config: ConfigService,
@@ -39,6 +41,7 @@ export class TodoDetailsComponent implements OnInit {
   
   ngOnInit(): void {
     this.loggedInUser = this.checkLogin.getUserData();
+    this.user_type = this.checkLogin.getUserData().user_type;
 
     this.getAllCategories();
 
@@ -125,6 +128,13 @@ export class TodoDetailsComponent implements OnInit {
     // store image in DB and get store URL
     this.imageStore.uploadFile(event);
     this.commentHaveImg = true;
+  }
+
+  delete() {
+    this.apiCallService.delete(this.config.tables.todoTable, this.todo.Id).subscribe(res => {
+      this.toggleBack();
+      this.back();
+    })
   }
 
 }
